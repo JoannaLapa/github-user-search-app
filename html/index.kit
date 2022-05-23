@@ -15,32 +15,65 @@
   <!-- @include "header.kit" -->
   <main>
     <div class="main__wrapper">
-      <form class="search" id="search" role="search">
-        <input class="search__input" type="search" id="search-input" name="search"
-          placeholder="Search GitHub username...">
-        <button class="search__button" name="button">Search</button>
-        <img src="../src/img/icon-search.svg" alt="">
-      </form>
-      <div class="user-profile__container">
-        <div class="user-profile__header">
-          <a href="" class="user-profile__avatar"><img src="" alt=""></a>
-          <div class="user-profile__name-box">
-            <h1 class="user-profile__name">The Octocat</h1>
-            <div class="user-profile__username-box">
-              <span class="user-profile__username">@octocat</span>
-              <div class="user-profile__joined-date">
-                <p>Joined 25 Jan 2011</p>
-              </div>
-              <div class="user-profile__bio-box">
-                <p class="user-profile__bio">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
-                  Quisque volutpat mattis eros.</p>
-              </div>
+      <section class="user-search">
+        <form class="search" id="search" role="search">
+          <input class="search__input" type="search" id="search-input" name="search"
+            placeholder="Search GitHub username...">
+          <button class="search__button" name="button">Search</button>
+          <img src="../src/img/icon-search.svg" alt="">
+        </form>
+      </section>
+      <section class="user-profile">
+        <div class="user-profile__container">
+          <div class="avatar-container">
+            <a href="" class="avatar"><img src="" alt=""></a>
+          </div>
+          <div class="overview__container">
+            <h1 class="overview__name">The Octocat</h1>
+            <span class="overview__username">@octocat</span>
+            <p class="overview__joined-date">Joined 25 Jan 2011</p>
+            <div class="overview__bio-box">
+              <p class="overview__bio-text">This profile has no bio.</p>
+            </div>
+          </div>
+          <div class="statistics__container">
+            <div class="statistics__box">
+              <p class="statistics__title">Repos</p>
+              <p class="statistics__numbers">8</p>
+            </div>
+            <div class="statistics__box">
+              <p class="statistics__title">Followers</p>
+              <p class="statistics__numbers">3938</p>
+            </div>
+            <div class="statistics__box">
+              <p class="statistics__title">Following</p>
+              <p class="statistics__numbers">9</p>
+            </div>
+          </div>
+
+          <div class="contact__container">
+            <div class="contact__box">
+              <img src="/src/img/icon-location.svg" alt="" class="contact__icon">
+              <p class="contact__details">San Francisco</p>
+            </div>
+            <div class="contact__box">
+              <img src="../src/img/icon-website.svg" alt="" class="contact__icon">
+              <p class="contact__details">https://github.blog</p>
+            </div>
+            <div class="contact__box">
+              <img src="../src/img/icon-twitter.svg" alt="" class="contact__icon">
+              <p class="contact__details">Not Available</p>
+            </div>
+            <div class="contact__box">
+              <img src="../src/img/icon-company.svg" alt="" class="contact__icon">
+              <p class="contact__details">@github</p>
             </div>
           </div>
         </div>
-      </div>
+
+      </section>
     </div>
-    <h1></h1>
+
 
 
     Joined
