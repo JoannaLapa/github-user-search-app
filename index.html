@@ -17,50 +17,79 @@
 
   <header class="header">
     <div class="header__wrapper">
-        <div class="header__app-name">devfinder</div>
-        <div class="screen-mode">
-            <p class="screen-mode--dark">dark</p>
-            <p class="screen-mode--light">light</p>
-            <img src="/src/img/icon-moon.svg" alt="moon" class="screen-mode__img--dark">
-            <img src="/src/img/icon-sun.svg" alt="sun" class="screen-mode__img--light">
-        </div>
+            <span class="header__app-name">devfinder</span>
+        <button class="screen-mode" aria-label="night mode switch">
+            <span class="screen-mode__title">dark</span>
+            <div class="screen-mode__icon"></div>
+            <!-- <img src="/src/img/icon-moon.svg" alt="moon" class="screen-mode__img--dark"> -->
+            <!-- <img src="/src/img/icon-sun.svg" alt="sun" class="screen-mode__img--light"> --> 
+        </button>
     </div>
 </header>
   <main>
     <div class="main__wrapper">
-      <form class="search" id="search" role="search">
-        <input class="search__input" type="search" id="search-input" name="search"
-          placeholder="Search GitHub username...">
-        <button class="search__button" name="button">Search</button>
-        <img src="../src/img/icon-search.svg" alt="">
-      </form>
-      <div class="user-profile__container">
-        <div class="user-profile__header">
-          <a href="" class="user-profile__avatar"><img src="" alt=""></a>
-          <div class="user-profile__name-box">
-            <h1 class="user-profile__name">The Octocat</h1>
-            <div class="user-profile__username-box">
-              <span class="user-profile__username">@octocat</span>
-              <div class="user-profile__joined-date">
-                <p>Joined 25 Jan 2011</p>
-              </div>
-              <div class="user-profile__bio-box">
-                <p class="user-profile__bio">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
-                  Quisque volutpat mattis eros.</p>
-              </div>
+      <section class="user-search">
+        <form class="search" id="search" role="search">
+          <input class="search__input" type="search" id="search-input" name="search"
+            placeholder="Search GitHub username...">
+          <button class="search__button" name="button">Search</button>
+          <img src="../src/img/icon-search.svg" alt="">
+        </form>
+      </section>
+      <section class="user-profile">
+        <div class="user-profile__container">
+          <div class="avatar-container">
+            <a href="" class="avatar"><img src="" alt=""></a>
+          </div>
+          <div class="overview__container">
+            <h1 class="overview__name">The Octocat</h1>
+            <h3 class="overview__username">@octocat</h3>
+            <p class="overview__joined-date">Joined 25 Jan 2011</p>
+            <div class="overview__bio-box">
+              <h2 class="overview__bio-text">This profile has no bio.</h2>
+            </div>
+          </div>
+          <div class="statistics__container">
+            <div class="statistics__box">
+              <h4 class="statistics__title">Repos</h4>
+              <p class="statistics__numbers">8</p>
+            </div>
+            <div class="statistics__box">
+              <h4 class="statistics__title">Followers</h4>
+              <p class="statistics__numbers">3938</p>
+            </div>
+            <div class="statistics__box">
+              <h4 class="statistics__title">Following</h4>
+              <p class="statistics__numbers">9</p>
+            </div>
+          </div>
+
+          <div class="contact__container">
+            <div class="contact__box">
+              <img src="/src/img/icon-location.svg" alt="" class="contact__icon">
+              <p class="contact__details">San Francisco</p>
+            </div>
+            <div class="contact__box">
+              <img src="../src/img/icon-website.svg" alt="" class="contact__icon">
+              <p class="contact__details">https://github.blog</p>
+            </div>
+            <div class="contact__box">
+              <img src="../src/img/icon-twitter.svg" alt="" class="contact__icon">
+              <p class="contact__details">Not Available</p>
+            </div>
+            <div class="contact__box">
+              <img src="../src/img/icon-company.svg" alt="" class="contact__icon">
+              <p class="contact__details">@github</p>
             </div>
           </div>
         </div>
-      </div>
+
+      </section>
     </div>
-    <h1></h1>
+
 
 
     Joined
-
-    Repos
-    Followers
-    Following
   </main>
   <footer>
     <div class="footer__wrapper">

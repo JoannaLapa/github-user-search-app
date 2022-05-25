@@ -1,9 +1,55 @@
-*, ::after, ::before{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+@use 'colors' as c;
+*,
+::after,
+::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
-body{
-    font-family: 'Space Mono', monospace;
+:root {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Space Mono', monospace;
+	background-color: c.$light;
+}
+
+.header {
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		padding: 3.1rem 2.4rem 3.6rem;
+		min-height: 3.8rem;
+	}
+
+	&__app-name {
+		justify-self: flex-start;
+		font-weight: 700;
+		font-size: 2.6rem;
+		line-height: 3.85rem;
+		color: c.$black-logo;
+	}
+}
+
+.screen-mode {
+	min-width: 11rem;
+	min-height: 2rem;
+	border: 1px solid transparent;
+	background-color: c.$light;
+	background-image: url('../img/icon-moon.svg');
+	background-repeat: no-repeat;
+	background-position: 100% calc(100% - 10px);
+	
+	&__title {
+		padding: 0 1.6rem;
+		color: c.$petrol;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 1.3rem;
+		line-height: 1.93rem;
+		letter-spacing: 0.25rem;
+		text-align: left;
+	}
 }
