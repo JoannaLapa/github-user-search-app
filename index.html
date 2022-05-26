@@ -14,8 +14,8 @@
 </head>
 
 <body>
-
-  <header class="header">
+  <div class="wrapper">
+    <header class="header">
     <div class="header__wrapper">
             <span class="header__app-name">devfinder</span>
         <button class="screen-mode" aria-label="night mode switch">
@@ -26,15 +26,18 @@
         </button>
     </div>
 </header>
-  <main>
-    <div class="main__wrapper">
+    <main>
+
       <section class="user-search">
-        <form class="search" id="search" role="search">
-          <input class="search__input" type="search" id="search-input" name="search"
-            placeholder="Search GitHub username...">
-          <button class="search__button" name="button">Search</button>
-          <img src="../src/img/icon-search.svg" alt="">
-        </form>
+        <div class="search">
+          <form class="search__form" id="search" role="search">
+            <div class="search__icon"></div>
+            <!-- <img class="search__icon"src="../src/img/icon-search.svg" alt=""> -->
+            <input class="search__input" type="search" id="search-input" name="search"
+              placeholder=" Search GitHub username...">
+            <button class="search__button" name="button">Search</button>
+          </form>
+        </div>
       </section>
       <section class="user-profile">
         <div class="user-profile__container">
@@ -85,12 +88,8 @@
         </div>
 
       </section>
-    </div>
-
-
-
-    Joined
-  </main>
+    </main>
+  </div>
   <footer>
     <div class="footer__wrapper">
     <address>Challenge  from <a href="https://www.frontendmentor.io/home">Frontend Mentor</a></address> made by <a href="https://github.com/JoannaLapa">Joanna Łapa</a>
