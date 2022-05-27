@@ -134,3 +134,87 @@ body {
 		min-height: 51.7rem;
 	}
 }
+
+.avatar {
+
+		height: 7rem;
+		width: 7rem;
+		z-index: 5;
+		// background-color: rgba(151, 151, 151, 0.2);
+		border-radius: 50%;
+}
+
+.overview {
+	
+	&__name{
+		color: c.$dark-grey;
+		font-size: 1.6rem;
+		line-height: 2.37rem;
+		font-weight: 700;	
+	}
+
+	&__username, 
+	&__joined-date {
+		font-size: 1.3rem;
+		line-height: 1.925rem;
+		font-weight: 400;
+	}
+
+	&__username{
+		color: c.$royal-blue;
+		
+	}
+
+	&__joined-date{
+		color: c.$grey;
+	}
+
+	&__bio-text {
+		color: c.$petrol;
+		font-size: 1.3rem;
+		line-height: 130%;
+		font-weight: 400;
+		text-align: left;
+	}
+}
+
+.statistics{
+	&__container {
+		display: flex;
+justify-content: space-evenly;
+align-items: center;
+		min-height: 8.5rem;
+	}
+
+	&__title{
+		color: c.$petrol;
+		font-weight: 400;
+		font-size: 1.1rem;
+		line-height: 1.629rem;
+	}
+
+	&__numbers{
+		color: c.$dark-grey;
+		font-size: 1.6rem;
+		font-weight: bold;
+	}
+}
+
+.contact{
+
+	&__container{
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__box{
+		display: grid;
+//tutaj zrobić grida ze względu na zmianę położenia na tablecie 
+	}
+
+	&__details{
+		padding-left: 1.3rem;
+		flex-grow: 2;
+	}
+
+}
