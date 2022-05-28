@@ -20,6 +20,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	margin: 0 auto;
 	padding: 3.1rem 2.4rem 3.9rem;
 	max-width: 73rem;
 }
@@ -126,50 +127,66 @@ body {
 	}
 }
 
-.user-profile{
-	
-	&__container{
+.user-profile {
+	&__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		padding: 3.2rem 2.4rem 4.8rem;
+		margin-top: 6.3rem;
 		width: 100%;
 		min-height: 51.7rem;
 	}
 }
 
 .avatar {
-
-		height: 7rem;
-		width: 7rem;
-		z-index: 5;
-		// background-color: rgba(151, 151, 151, 0.2);
-		border-radius: 50%;
+	height: 7rem;
+	width: 7rem;
+	z-index: 5;
+	border-radius: 50%;
 }
 
 .overview {
-	
-	&__name{
+
+	&__container {
+		display: grid;
+		grid:  39% 61% / 30% 70%;
+	 justify-content: stretch;
+		min-height: 17.8rem;
+	}
+
+	&__names-box{
+		grid-area: 1 / 2 / 2 / 3;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 7rem;
+	}
+	&__name {
 		color: c.$dark-grey;
 		font-size: 1.6rem;
 		line-height: 2.37rem;
-		font-weight: 700;	
+		font-weight: 700;
 	}
 
-	&__username, 
+	&__username,
 	&__joined-date {
 		font-size: 1.3rem;
 		line-height: 1.925rem;
 		font-weight: 400;
 	}
 
-	&__username{
+	&__username {
 		color: c.$royal-blue;
-		
 	}
 
-	&__joined-date{
+	&__joined-date {
 		color: c.$grey;
 	}
 
-	&__bio-text {
+	&__bio {
+		grid-area: 2 / 1 / 3 / 3;
+		padding-top: 3.3rem;
 		color: c.$petrol;
 		font-size: 1.3rem;
 		line-height: 130%;
@@ -178,43 +195,61 @@ body {
 	}
 }
 
-.statistics{
+.statistics {
 	&__container {
 		display: flex;
-justify-content: space-evenly;
-align-items: center;
+		justify-content: space-evenly;
+		align-items: center;
 		min-height: 8.5rem;
+		background-color: c.$light;
+		border-radius: 1.5rem;
 	}
 
-	&__title{
+	&__title {
 		color: c.$petrol;
 		font-weight: 400;
 		font-size: 1.1rem;
 		line-height: 1.629rem;
+		text-align: center;
 	}
 
-	&__numbers{
+	&__numbers {
 		color: c.$dark-grey;
 		font-size: 1.6rem;
 		font-weight: bold;
+		text-align: center;
 	}
 }
 
-.contact{
-
-	&__container{
+.contact {
+	&__container {
 		display: flex;
 		flex-direction: column;
+		justify-content: space-evenly;
+		min-height: 12.7rem;
 	}
-
-	&__box{
+	&__box, &__details {
+		color: c.$petrol;
+	}
+	&__box {
 		display: grid;
-//tutaj zrobić grida ze względu na zmianę położenia na tablecie 
+		grid-template-columns: 3.5rem 24rem;
+		//tutaj zrobić grida ze względu na zmianę położenia na tablecie
 	}
 
-	&__details{
-		padding-left: 1.3rem;
-		flex-grow: 2;
+	&__details {
+		font-size: 1.3rem;
+		
 	}
+}
 
+footer{
+	height: 2.5rem;
+}
+
+.footer__wrapper {
+	display: flex;
+	align-items: end;
+	justify-content: center;
+	margin-bottom: 1rem;
 }
