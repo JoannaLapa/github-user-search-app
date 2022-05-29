@@ -1,14 +1,21 @@
 //light mode colors:
-$black-logo: #222731;
+$logo: #222731;
 $royal-blue: #0079FF;
-$grey: #697C9A;
-$petrol: #4B6A9B;
-$dark-grey: #2B3442;
-$light: #F6F8FF;
-$white: #FEFEFE;
+$text-1: #2B3442;
+$text-2: #4B6A9B;
+$text-3: #FFFFFF;
+$text-4: #697C9A;
+$background-1: #F6F8FF;
+$background-2: #FEFEFE;
+$background-3: #F2F2F2;
 
 //dark mode colors
-$white2: #FFFFFF;
-$black: #141D2F;
-$dark-blue: #1E2A47;
-
+.dark{
+    $logo: #FFFFFF;
+    $text-1: #FFFFFF;
+    $text-2: #FFFFFF;
+    $text-4: #FFFFFF;
+    $background-1: #141D2F;
+    $background-2: #1E2A47;
+    $background-3: #141D2F;
+}
