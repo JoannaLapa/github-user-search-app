@@ -82,6 +82,12 @@ body {
 			background-image: url('../img/icon-search.svg');
 			background-size: contain;
 			background-repeat: no-repeat;
+
+			@media (min-width: 76.8rem) {
+				margin-left: 3.2rem;
+				width: 7rem;
+				height: 2.4rem;
+			}
 		}
 
 		&__input {
@@ -93,7 +99,7 @@ body {
 			&::placeholder {
 				max-width: 18.4rem;
 				color: c.$text-2;
-				text-align: center;
+				text-align: left;
 				font-family: 'Space Mono', monospace;
 				font-size: 1.3rem;
 				line-height: 2.5rem;
@@ -102,16 +108,20 @@ body {
 			}
 
 			&:focus {
-				outline: none;
+				outline: none; //czymś muszę zastąpić outlina
 			}
 		}
 
 		&__form {
 			display: flex;
 			align-items: center;
-			justify-content: center;
+			justify-content: space-between;
 			min-height: 6rem;
 			width: 100%;
+
+			@media (min-width: 768px) {
+				min-height: 6.9rem;
+			}
 		}
 
 		&__button {
