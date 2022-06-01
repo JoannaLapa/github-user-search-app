@@ -1,0 +1,20 @@
+%flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+%flex-column-space-between {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+%flex-row-space-evenly {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+%flex-row-space-between {
+    display: flex;
+    justify-content: space-between;
+}
