@@ -1,3 +1,5 @@
+@use 'colors' as c;
+
 %flex-column {
 	display: flex;
 	flex-direction: column;
@@ -17,4 +19,10 @@
 %flex-row-space-between {
     display: flex;
     justify-content: space-between;
+}
+
+%main-boxes-styles{
+    background-color: c.$background-2;
+    box-shadow: 0 1.6rem 3rem rgba(70, 95, 187, 0.1986);
+    border-radius: 1.5rem;
 }

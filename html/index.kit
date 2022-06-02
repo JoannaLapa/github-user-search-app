@@ -14,7 +14,8 @@
   <div class="wrapper">
     <!-- @include "header.kit" -->
     <main>
-      <section class="user-search">
+      <div class="main__container">
+        <section class="user-search">
         <div class="search">
           <form class="search__form" id="search" role="search">
             <div class="search__icon"></div>
@@ -23,17 +24,17 @@
             <button class="search__button" name="button">Search</button>
           </form>
         </div>
-      </section>
-      <section class="user-profile">
+        </section>
+        <section class="user-profile">
         <div class="user-profile__container">
           <div class="overview__container">
             <a href="" class="avatar"><img class="avatar" src="/src/img/github-octocat.png" alt="gitHub Octocat"></a>
             <div class="overview__names-box">
-            <h1 class="overview__name">The Octocat</h1>
-            <h3 class="overview__username">@octocat</h3>
-            <p class="overview__joined-date">Joined 25 Jan 2011</p>
-          </div>
-              <h2 class="overview__bio">This profile has no bio.</h2>
+              <h1 class="overview__name">The Octocat</h1>
+              <h3 class="overview__username">@octocat</h3>
+              <p class="overview__joined-date">Joined 25 Jan 2011</p>
+            </div>
+            <h2 class="overview__bio">This profile has no bio.</h2>
           </div>
           <div class="statistics__container">
             <div class="statistics__box">
@@ -70,7 +71,8 @@
           </div>
         </div>
 
-      </section>
+        </section>
+      </div>
     </main>
   </div>
   <!-- @include 'footer.kit' -->
