@@ -16,6 +16,8 @@
 }
 
 body {
+	@extend %flex-column;
+	justify-content: center;
 	font-family: 'Space Mono', monospace;
 	background-color: c.$text-3;
 }
@@ -23,19 +25,19 @@ body {
 .wrapper {
 	@extend %flex-column;
 	justify-content: space-evenly;
-	margin: auto;
+	margin: 0 auto;
 	padding: 3.1rem 2.4rem 3.9rem;
 	width: 100%;
-	max-width: 73rem;
 
 	@include m.respond-to('small') {
-		width: 57.3rem;
+		padding: 14rem 9.7rem 2.36rem;
+		max-width: 76.8rem;
 	}
 
 	@include m.respond-to('large') {
-		width: 73rem;
+		padding-top: 14.4rem;
+		max-width: 92.5rem;
 	}
-
 }
 .header {
 	&__wrapper {
@@ -60,6 +62,10 @@ body {
 	background-image: url('../img/icon-moon.svg');
 	background-repeat: no-repeat;
 	background-position: 100% calc(100% - 10px);
+
+	@include m.respond-to('medium') {
+		max-width: 7.8rem;
+	}
 
 	&__title {
 		color: c.$text-2;
@@ -91,9 +97,9 @@ body {
 		background-size: contain;
 		background-repeat: no-repeat;
 
-		@include m.respond-to('small') {
+		@include m.respond-to('medium') {
 			margin-left: 3.2rem;
-			width: 4.5rem;
+			width: 3.8rem;
 			height: 2.4rem;
 		}
 	}
