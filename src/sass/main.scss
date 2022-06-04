@@ -164,6 +164,7 @@ body {
 		padding: 3.2rem 2.4rem 4.4rem;
 		width: 100%;
 		min-height: 51.7rem;
+		gap: 2.3rem;
 
 		@include m.respond-to('small') {
 			min-height: 48.1rem;
@@ -175,8 +176,9 @@ body {
 .overview {
 	&__container {
 		display: grid;
-		grid: 39% 61% / 30% 70%;
+		grid: 39% 61% / 25% 75%;
 		justify-content: stretch;
+		gap: 3.3rem 1.9rem;
 		min-height: 17.8rem;
 
 		@include m.respond-to('medium') {
@@ -228,7 +230,7 @@ body {
 	&__username,
 	&__joined-date {
 		font-size: f.$fz-110;
-		@include m.respond-to('medium') {
+		@include m.respond-to('extra-small') {
 			font-size: f.$fz-130;
 		}
 	}
@@ -250,17 +252,16 @@ body {
 	}
 
 	&__bio {
-		//za duży odstęp na mobile
 		@extend %fz-130-line-height-130;
+		line-height: 2.5rem;
 		grid-area: 2 / 1 / 3 / 3;
-		margin-top: 3.3rem;
+		justify-self: stretch;
+		min-height: 7.5rem;
 		color: c.$text-2;
 		text-align: left;
 		font-weight: 400;
 
 		@include m.respond-to('medium') {
-			// padding: 0;
-			// margin: 2.4rem 0 3.2rem;
 			min-height: 5rem;
 			font-size: f.$fz-150;
 			line-height: 2.5rem;
