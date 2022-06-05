@@ -276,12 +276,29 @@ body {
 		min-height: 8.5rem;
 		background-color: c.$background-1;
 		border-radius: 1.5rem;
+		@include m.respond-to('medium') {
+			justify-content: space-evenly;
+			padding: 1.5rem 3.2rem 1.7rem;
+		}
+
+	}
+
+	&__box{
+		@include m.respond-to('medium') {
+			width: 14.3rem;
+		}
 	}
 
 	&__title {
 		color: c.$text-2;
-		font-size: 1.1rem;
+		font-size: f.$fz-110;
+		font-weight: 400;
 		text-align: center;
+
+		@include m.respond-to('medium') {
+			font-size: f.$fz-130;
+			text-align: left;	
+		}
 	}
 
 	&__numbers {
@@ -289,6 +306,11 @@ body {
 		font-size: 1.6rem;
 		font-weight: bold;
 		text-align: center;
+		@include m.respond-to('medium') {
+			font-size: f.$fz-220;
+			line-height: 3.3rem;
+			text-align: left;	
+		}
 	}
 }
 
@@ -297,6 +319,23 @@ body {
 		@extend %flex-column;
 		justify-content: space-between;
 		min-height: 12.7rem;
+		@include m.respond-to('medium') {
+			min-height: 6.3rem;
+			flex-direction: row;
+			flex-wrap: wrap;
+			:nth-child(1) {
+				order: 1;
+			}
+			:nth-child(3) {
+				order: 2;
+			}
+			:nth-child(2) {
+				order: 3;
+			}
+			:nth-child(4) {
+				order: 4;
+			}
+		}
 	}
 	&__box,
 	&__details {
@@ -305,6 +344,9 @@ body {
 	&__box {
 		display: grid;
 		grid-template-columns: 3.5rem 24rem;
+		@include m.respond-to('medium') {
+			width: 50%;
+		}
 	}
 
 	&__details {
