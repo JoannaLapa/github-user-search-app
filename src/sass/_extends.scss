@@ -12,6 +12,12 @@
 	justify-content: space-between;
 }
 
+%flex-column-space-evenly {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
 %flex-row-space-evenly {
 	display: flex;
 	justify-content: space-evenly;

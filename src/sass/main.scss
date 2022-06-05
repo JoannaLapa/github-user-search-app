@@ -23,8 +23,7 @@ body {
 }
 
 .wrapper {
-	@extend %flex-column;
-	justify-content: space-evenly;
+	@extend %flex-column-space-evenly;
 	margin: 0 auto;
 	padding: 3.1rem 2.4rem 3.9rem;
 	width: 100%;
@@ -277,13 +276,11 @@ body {
 		background-color: c.$background-1;
 		border-radius: 1.5rem;
 		@include m.respond-to('medium') {
-			justify-content: space-evenly;
 			padding: 1.5rem 3.2rem 1.7rem;
 		}
-
 	}
 
-	&__box{
+	&__box {
 		@include m.respond-to('medium') {
 			width: 14.3rem;
 		}
@@ -297,7 +294,7 @@ body {
 
 		@include m.respond-to('medium') {
 			font-size: f.$fz-130;
-			text-align: left;	
+			text-align: left;
 		}
 	}
 
@@ -309,7 +306,7 @@ body {
 		@include m.respond-to('medium') {
 			font-size: f.$fz-220;
 			line-height: 3.3rem;
-			text-align: left;	
+			text-align: left;
 		}
 	}
 }
@@ -319,7 +316,7 @@ body {
 		@extend %flex-column;
 		justify-content: space-between;
 		min-height: 12.7rem;
-		
+
 		@include m.respond-to('medium') {
 			min-height: 6.3rem;
 			flex-direction: row;
@@ -350,8 +347,8 @@ body {
 		@include m.respond-to('medium') {
 			width: 50%;
 			min-height: 2.2rem;
+		}
 	}
-}
 
 	&__details {
 		font-size: 1.3rem;
