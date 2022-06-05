@@ -319,10 +319,13 @@ body {
 		@extend %flex-column;
 		justify-content: space-between;
 		min-height: 12.7rem;
+		
 		@include m.respond-to('medium') {
 			min-height: 6.3rem;
 			flex-direction: row;
 			flex-wrap: wrap;
+			row-gap: 1.9rem;
+
 			:nth-child(1) {
 				order: 1;
 			}
@@ -346,11 +349,16 @@ body {
 		grid-template-columns: 3.5rem 24rem;
 		@include m.respond-to('medium') {
 			width: 50%;
-		}
+			min-height: 2.2rem;
 	}
+}
 
 	&__details {
 		font-size: 1.3rem;
+
+		@include m.respond-to('medium') {
+			font-size: f.$fz-150;
+		}
 	}
 }
 
@@ -362,4 +370,5 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
+	padding: 3.1rem;
 }
