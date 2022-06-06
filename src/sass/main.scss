@@ -61,19 +61,35 @@ body {
 	background-image: url('../img/icon-moon.svg');
 	background-repeat: no-repeat;
 	background-position: 100% calc(100% - 10px);
+	color: c.$text-2;
+	font-weight: 700;
+	font-size: f.$fz-130;
+	letter-spacing: 0.25rem;
+	text-align: left;
+	transition: background-image 0.3s color 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		background-image: url('../img/icon-moon-hover.svg');
+		color: c.$text-5;
+	}
 
 	@include m.respond-to('medium') {
 		max-width: 7.8rem;
 	}
 
-	&__title {
-		color: c.$text-2;
-		text-transform: uppercase;
-		font-weight: 700;
-		font-size: f.$fz-130;
-		letter-spacing: 0.25rem;
-		text-align: left;
-	}
+	// &__title {
+	// 	color: c.$text-2;
+	// 	text-transform: uppercase;
+	// 	font-weight: 700;
+	// 	font-size: f.$fz-130;
+	// 	letter-spacing: 0.25rem;
+	// 	text-align: left;
+	// 	transition: color 0.3s;
+	// 	&:hover {
+	// 		color: c.$text-5;
+	// 	}
+	// }
 }
 .main__container {
 	@extend %flex-column;
@@ -107,6 +123,7 @@ body {
 		flex-grow: 2;
 		min-height: 2.5rem;
 		border: none;
+		cursor: pointer;
 		&::placeholder {
 			@extend %fz-130-line-height-130;
 			max-width: 18.4rem;
@@ -149,6 +166,7 @@ body {
 		letter-spacing: 0.1rem;
 		background-color: c.$royal-blue;
 		border: 1px solid transparent;
+		cursor: pointer;
 		transition: background-color 0.3s;
 		&:hover {
 			background-color: c.$background-4;
@@ -423,11 +441,20 @@ body {
 
 	&__details {
 		font-size: 1.3rem;
+		transition: text-decoration 0.3s;
+		cursor: pointer;
+		&:hover{
+			text-decoration: underline;
+		}
 
 		@include m.respond-to('medium') {
 			font-size: f.$fz-150;
 		}
 	}
+}
+
+.unavailable {
+	color: c.$text-2;
 }
 
 footer {
