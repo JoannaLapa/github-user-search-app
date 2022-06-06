@@ -15,13 +15,3 @@ $breakpoints: (
 		@warn 'Unfortunately no vlue can be retrievedfrom `#{$breakpoint}`.'+ 'Available breakpoints are: #{map-keys($breakpoints)}.';
 	}
 }
-
-// Usage:
-
-// .selector {
-//   color: red;
-  
-//   @include respond-to('small') {
-//     color: blue;
-//   }
-// }
