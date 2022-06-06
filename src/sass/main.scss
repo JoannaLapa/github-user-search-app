@@ -149,6 +149,10 @@ body {
 		letter-spacing: 0.1rem;
 		background-color: c.$royal-blue;
 		border: 1px solid transparent;
+		transition: background-color 0.3s;
+		&:hover {
+			background-color: c.$background-4;
+		}
 
 		@include m.respond-to('medium') {
 			font-size: f.$fz-160;
@@ -182,10 +186,9 @@ body {
 		}
 
 		@include m.respond-to('extra-large') {
-			display:grid;
+			display: grid;
 			grid: 33% 33% 34% / 12.2rem 1fr;
 			min-height: 32.3rem;
-
 		}
 	}
 }
@@ -204,7 +207,7 @@ body {
 		}
 
 		@include m.respond-to('extra-large') {
-			grid-template-columns:  11.7rem 1fr;
+			grid-template-columns: 11.7rem 1fr;
 			grid-auto-rows: minmax(2.5 rem, auto);
 			gap: 2rem 3.2rem;
 			min-height: 11.7rem;
@@ -301,6 +304,7 @@ body {
 		@include m.respond-to('extra-large') {
 			order: 2;
 			justify-self: flex-end;
+			text-align: right;
 		}
 	}
 
@@ -317,7 +321,6 @@ body {
 		@include m.respond-to('medium') {
 			min-height: 5rem;
 			font-size: f.$fz-150;
-		//	line-height: 2.5rem;
 		}
 
 		@include m.respond-to('extra-large') {
