@@ -29,11 +29,45 @@
 
 %main-boxes-styles{
     background-color: var( --background-2);
-    box-shadow: 0 1.6rem 3rem rgba(70, 95, 187, 0.1986);
+    box-shadow: var(--box-shadow);
     border-radius: 1.5rem;
 }
 
 %fz-130-line-height-130{
 	font-size: f.$fz-130;
 	line-height: 130%;
+}
+
+%dark-mode {
+	--text-1: #ffffff;
+	--text-2: var(--text-1);
+	--text-4: var(--text-1);
+	--text-5: #90a4d4;
+	--text-6: var(--text-1);
+	--background-1: #141d2f;
+	--background-2: #1e2a47;
+	--background-3: var(--background-1);
+	--background-4: var(--background-1);
+	--background-image-main: url('../img/icon-sun.svg');
+	--background-image-hover: url('../img/icon-sun-hover.svg');
+	--box-shadow: none;
+}
+
+%light-mode{
+	--text-1: #2b3442;
+	--text-2: #4b6a9b;
+	--text-3: #ffffff;
+	--text-4: #697c9a;
+	--text-5: #222731;
+	--text-6: var(--text-5);
+
+	--background-1: #f6f8ff;
+	--background-2: #fefefe;
+	--background-3: #f2f2f2;
+	--background-4: var(--text-3);
+	--background-5: #0079ff;
+	--background-6: #60abff;
+	--background-image-main: url('../img/icon-moon.svg');
+	--background-image-hover: url('../img/icon-moon-hover.svg');
+	--box-shadow: 0 1.6rem 3rem rgba(70, 95, 187, 0.1986);
 }

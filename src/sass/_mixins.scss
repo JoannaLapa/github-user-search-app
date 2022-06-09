@@ -6,6 +6,11 @@ $breakpoints: (
     'extra-large': 1200px //design 1440/900
 )!default;
 
+$prefers-color-scheme: (
+	'dark': dark,
+	'light': light,
+)!default;
+
 @mixin respond-to($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
 		@media (min-width: map-get($breakpoints, $breakpoint)) {
@@ -15,3 +20,6 @@ $breakpoints: (
 		@warn 'Unfortunately no vlue can be retrievedfrom `#{$breakpoint}`.'+ 'Available breakpoints are: #{map-keys($breakpoints)}.';
 	}
 }
+
+
+
