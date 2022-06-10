@@ -2,6 +2,8 @@ const button = document.querySelector('#screen-mode__button')
 const body = document.querySelector('body')
 const headerWrapper = document.querySelector('#headerWrapper')
 let theme = localStorage.getItem('theme') || 'light'
+const URL = 'https://api.github.com/users/${username}'
+let username = 'JoannaLapa'
 
 const changeColorScreenMode = () => {
 	if (
@@ -29,3 +31,7 @@ button.addEventListener('click', () => {
 	changeColorScreenMode()
 })
 
+fetch(URL)
+	.then(res => res.json())
+	.then(data => console.log(data))
+	.catch(console.log('No user available at this name'))
