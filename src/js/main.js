@@ -6,10 +6,7 @@ const searchInput = document.querySelector('#search__input')
 const body = document.querySelector('body')
 const headerWrapper = document.querySelector('#header__wrapper')
 let theme = localStorage.getItem('theme') || 'light'
-const userProfileContainer = document.querySelector('#user-profile__container')
-
 let userName = 'octokat'
-
 const userURL = URL
 
 const changeColorScreenMode = () => {
@@ -35,113 +32,39 @@ const changeColorScreenMode = () => {
 	localStorage.setItem('theme', theme)
 }
 
-const getUserData = function (userName){
-fetch(`https://api.github.com/users/${userName}`).then(response => response.json()).then(data => renderUser(data))
+const getUserData = function (userName) {
+	fetch(`https://api.github.com/users/${userName}`)
+		.then(response => response.json())
+		.then(data => renderUser(data))
 }
 
-const renderUser = function (data){
-	console.log(data.created_at);
-const avatar = document.querySelector('#avatar').src = data.avatar_url
-const name = document.querySelector('#name').textContent = data.name
-const login = document.querySelector('#username').textContent = data.login
-const joinedDate = document.querySelector('#joined-date').textContent= data.created_at
-//   </div>
-//   <h2 class="overview__bio">${data.bio}</h2>
-// </div>
-// <div class="statistics__container">
-//   <div class="statistics__box">
-// 	<h4 class="statistics__title">Repos</h4>
-// 	<p class="statistics__numbers">${data.public_repos}</p>
-//   </div>
-//   <div class="statistics__box">
-// 	<h4 class="statistics__title">Followers</h4>
-// 	<p class="statistics__numbers">${data.followers}</p>
-//   </div>
-//   <div class="statistics__box">
-// 	<h4 class="statistics__title">Following</h4>
-// 	<p class="statistics__numbers">${data.following}</p>
-//   </div>
-// </div>
+const renderUser = function (data) {
+	//setting the correct format date for joinedDate
+	const options = { year: 'numeric', month: 'short', day: 'numeric' }
+	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
+	console.log(correctDateFormat)
 
-// <div class="contact__container">
-//   <div class="contact__box">
-// 	<img src="/src/img/icon-location.svg" alt="" class="contact__icon">
-// 	<p class="contact__details">${data.location}</p>
-//   </div>
-//   <div class="contact__box">
-// 	<img src="../src/img/icon-website.svg" alt="" class="contact__icon">
-// 	<p class="contact__details">${data.blog}</p>
-//   </div>
-//   <div class="contact__box">
-// 	<img src="../src/img/icon-twitter.svg" alt="" class="contact__icon">
-// 	<p class="contact__details">${data.twitter_username}</p>
-//   </div>
-//   <div class="contact__box">
-// 	<img src="../src/img/icon-company.svg" alt="" class="contact__icon">
-// 	<p class="contact__details">${data.company}</p>
-//   </div>
-// </div>`;
-
+	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
+	const name = (document.querySelector('#name').textContent = data.name)
+	const login = (document.querySelector('#username').textContent = data.login)
+	const joinedDate = (document.querySelector('#joined-date').textContent = `Joined ${correctDateFormat}`)
+	const bio = (document.querySelector('#bio').textContent = data.bio)
+	const repos = (document.querySelector('#repos').textContent = data.public_repos)
+	const followers = (document.querySelector('#followers').textContent = data.followers)
+	const following = (document.querySelector('#following').textContent = data.following)
+	const location = (document.querySelector('#location').textContent = data.location)
+	const website = (document.querySelector('#website').textContent = data.blog)
+	const twitter = (document.querySelector('#twitter').textContent = data.twitter_username)
+	const company = (document.querySelector('#company').textContent = data.company)
 }
-getUserData(userName)
 
-
-searchButton.addEventListener('click', (e) =>{
+searchButton.addEventListener('click', e => {
 	e.preventDefault()
 	userName = searchInput.value.split(' ').join('')
-	console.log(userName)
 	getUserData(userName)
+	searchInput.value = ''
 })
-		
+
 screenModebutton.addEventListener('click', () => {
 	changeColorScreenMode()
 })
-
-// const renderUser = function (data){
-// 	const html = 
-// 	`<div class="overview__container">
-// 	  <a href="" class="overview__avatar"><img class="avatar" src="${data.avatar_url}"
-// 		  alt=""></a>
-// 	  <div class="overview__names-box">
-// 		<h1 class="overview__name">${data.name}</h1>
-// 		<h3 class="overview__username">@ ${data.login}</h3>
-// 		<p class="overview__joined-date">Joined ${data.created_at}</p>
-// 	  </div>
-// 	  <h2 class="overview__bio">${data.bio}</h2>
-// 	</div>
-// 	<div class="statistics__container">
-// 	  <div class="statistics__box">
-// 		<h4 class="statistics__title">Repos</h4>
-// 		<p class="statistics__numbers">${data.public_repos}</p>
-// 	  </div>
-// 	  <div class="statistics__box">
-// 		<h4 class="statistics__title">Followers</h4>
-// 		<p class="statistics__numbers">${data.followers}</p>
-// 	  </div>
-// 	  <div class="statistics__box">
-// 		<h4 class="statistics__title">Following</h4>
-// 		<p class="statistics__numbers">${data.following}</p>
-// 	  </div>
-// 	</div>
-	
-// 	<div class="contact__container">
-// 	  <div class="contact__box">
-// 		<img src="/src/img/icon-location.svg" alt="" class="contact__icon">
-// 		<p class="contact__details">${data.location}</p>
-// 	  </div>
-// 	  <div class="contact__box">
-// 		<img src="../src/img/icon-website.svg" alt="" class="contact__icon">
-// 		<p class="contact__details">${data.blog}</p>
-// 	  </div>
-// 	  <div class="contact__box">
-// 		<img src="../src/img/icon-twitter.svg" alt="" class="contact__icon">
-// 		<p class="contact__details">${data.twitter_username}</p>
-// 	  </div>
-// 	  <div class="contact__box">
-// 		<img src="../src/img/icon-company.svg" alt="" class="contact__icon">
-// 		<p class="contact__details">${data.company}</p>
-// 	  </div>
-// 	</div>`;
-	
-// 	userProfileContainer.insertAdjacentHTML('beforeend', html);
-// 	}
