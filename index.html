@@ -16,7 +16,7 @@
 <body>
   <div class="wrapper">
     <header class="header">
-    <div class="header__wrapper" id="headerWrapper">
+    <div class="header__wrapper" id="header__wrapper">
         <span class="header__app-name">devfinder</span>
         <button class="screen-mode" aria-label="night mode switch" id="screen-mode__button">
             <span class="screen-mode--dark">LIGHT</span>
@@ -29,21 +29,21 @@
           <div class="search">
             <form class="search__form" id="search" role="search">
               <div class="search__icon"></div>
-              <input class="search__input" type="search" id="search-input" name="search"
+              <input class="search__input" type="search" id="search__input" name="search"
                 placeholder=" Search GitHub username… ">
-              <button class="search__button" name="button">Search</button>
+              <button class="search__button" name="button" id="search__button">Search</button>
             </form>
           </div>
         </section>
         <section class="user-profile">
-          <div class="user-profile__container">
+          <div class="user-profile__container" id="user-profile__container">
             <div class="overview__container">
-              <a href="" class="overview__avatar"><img class="avatar" src="/src/img/github-octocat.png"
+              <a href="" class="overview__avatar"><img class="avatar" id="avatar" src="/src/img/github-octocat.png"
                   alt="gitHub Octocat"></a>
               <div class="overview__names-box">
-                <h1 class="overview__name">The Octocat</h1>
-                <h3 class="overview__username">@octocat</h3>
-                <p class="overview__joined-date">Joined 25 Jan 2011</p>
+                <h1 class="overview__name" id="name">The Octocat</h1>
+                <h3 class="overview__username" id="username">@octocat</h3>
+                <p class="overview__joined-date" id="joined-date">Joined 25 Jan 2011</p>
               </div>
               <h2 class="overview__bio">This profile has no bio.</h2>
             </div>
