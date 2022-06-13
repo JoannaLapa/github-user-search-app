@@ -39,11 +39,13 @@ const getUserData = function (userName) {
 }
 
 const renderUser = function (data) {
+
 	//setting the correct format date for joinedDate
 	const options = { year: 'numeric', month: 'short', day: 'numeric' }
 	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
 	console.log(correctDateFormat)
 
+	//seting the user data from API
 	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
 	const name = (document.querySelector('#name').textContent = data.name)
 	const login = (document.querySelector('#username').textContent = data.login)
@@ -57,6 +59,10 @@ const renderUser = function (data) {
 	const twitter = (document.querySelector('#twitter').textContent = data.twitter_username)
 	const company = (document.querySelector('#company').textContent = data.company)
 }
+
+// const renderError (msg) => {
+
+// }
 
 searchButton.addEventListener('click', e => {
 	e.preventDefault()
