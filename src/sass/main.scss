@@ -166,6 +166,17 @@ body.dark {
 		}
 	}
 
+	&__error-message {
+		padding: 0 2.4rem;
+		color: var(--text-7);
+		font-size: f.$fz-110;
+		font-weight: 700;
+		text-align: right;
+		@include m.respond-to('small') {
+			font-size: f.$fz-150;
+		}
+	}
+
 	&__button {
 		margin-right: 0.7rem;
 		width: 8.4rem;
@@ -495,6 +506,7 @@ footer {
 		--text-4: var(--text-1);
 		--text-5: #90a4d4;
 		--text-6: var(--text-1);
+		--text-7: #f74646;
 		--background-1: #141d2f;
 		--background-2: #1e2a47;
 		--background-3: var(--background-1);

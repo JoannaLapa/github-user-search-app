@@ -36,10 +36,13 @@ const getUserData = function (userName) {
 	fetch(`https://api.github.com/users/${userName}`)
 		.then(response => response.json())
 		.then(data => renderUser(data))
+		.catch(err => {
+			console.error(error)
+			renderError()
+		})
 }
 
 const renderUser = function (data) {
-
 	//setting the correct format date for joinedDate
 	const options = { year: 'numeric', month: 'short', day: 'numeric' }
 	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
@@ -60,9 +63,12 @@ const renderUser = function (data) {
 	const company = (document.querySelector('#company').textContent = data.company)
 }
 
-// const renderError (msg) => {
-
-// }
+const renderError = () => {
+	//nie działa text content pewnie
+	searchInput.value = 'No results'
+	searchInput.style.color = 'red'
+	searchInput.style.textAlign = 'right'
+}
 
 searchButton.addEventListener('click', e => {
 	e.preventDefault()
