@@ -32,14 +32,15 @@ const changeColorScreenMode = () => {
 	localStorage.setItem('theme', theme)
 }
 
+const renderError = () => {
+	const searchErrorMessage = (document.querySelector('#error-message').textContent = 'Check your internet connection!')
+}
+
 const getUserData = function (userName) {
 	fetch(`https://api.github.com/users/${userName}`)
 		.then(response => response.json())
 		.then(data => renderUser(data))
-		.catch(err => {
-			console.error(error)
-			renderError()
-		})
+		.catch(err => renderError('Check your internet connection!'))
 }
 
 const renderUser = function (data) {
@@ -61,13 +62,6 @@ const renderUser = function (data) {
 	const website = (document.querySelector('#website').textContent = data.blog)
 	const twitter = (document.querySelector('#twitter').textContent = data.twitter_username)
 	const company = (document.querySelector('#company').textContent = data.company)
-}
-
-const renderError = () => {
-	//nie działa text content pewnie
-	searchInput.value = 'No results'
-	searchInput.style.color = 'red'
-	searchInput.style.textAlign = 'right'
 }
 
 searchButton.addEventListener('click', e => {
