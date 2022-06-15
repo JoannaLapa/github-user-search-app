@@ -3,7 +3,6 @@
 const screenModebutton = document.querySelector('#screen-mode__button')
 const searchButton = document.querySelector('#search__button')
 const searchInput = document.querySelector('#search__input')
-const bio = document.querySelector('#bio')
 const body = document.querySelector('body')
 const headerWrapper = document.querySelector('#header__wrapper')
 let searchErrorMessage = document.querySelector('#error-message')
@@ -47,18 +46,18 @@ const getUserData = function (userName) {
 			return response.json()
 		})
 		.then(data => renderUser(data))
-	// .catch(err => renderError('No results'))
+	// .catch(err => console.error('No results'))
 	//muszę rozdzielić błąd z połączeniem internetowym z brakiem usera - sprawdzić dokładnie jeszcze raz jak ma zapisaną funkcję renderError tak, żebym mogła mieć dwa komunikaty i żeby po kliknięciu na button ten komunikat zniknął (na początku addEventListenera dodać pusty textContent)
 }
 
 const renderUser = function (data) {
-	console.log(data.bio)
-	console.log(data)
-	//setting the correct format date for joinedDate
+	console.log(data.location)
+
+	//SETTING THE CORRECT DATE'S FORMAT
 	const options = { year: 'numeric', month: 'short', day: 'numeric' }
 	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
 	console.log(correctDateFormat)
-
+	//CHECKING IF THE USER SET THE NAME
 	const correctName = name => {
 		if (data.name !== null) {
 			name = document.querySelector('#name').textContent = data.name
@@ -66,22 +65,24 @@ const renderUser = function (data) {
 			name = document.querySelector('#name').textContent = data.login
 		}
 	}
-	const checkIfHasBio = () => {
+	//CHECKING IS THE USER SET THE BIO
+	const checkIfHasBio = bio1 => {
 		if (data.bio === null) {
-			bio.textContent = 'This profile has no bio'
-			// bio.style.color = 'rgba(75, 106, 155, 0.75)'
-			bio.classList.add('overview__bio--transparency')
+			bio1 = document.querySelector('#bio')
+			bio1.textContent = 'This profile has no bio'
+			bio1.classList.add('overview__bio--transparency')
 		} else {
-			bio.textContent = data.bio
-			bio.classList.remove('overview__bio--transparency')
+			bio1 = document.querySelector('#bio')
+			bio1.textContent =  data.bio
+			bio1.classList.remove('overview__bio--transparency')
 		}
 	}
-	//seting the user data from API
+	//SETTING THE USER DATA FROM API
 	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
 	const name = correctName()
 	const login = (document.querySelector('#username').textContent = `@${data.login}`)
 	const joinedDate = (document.querySelector('#joined-date').textContent = `Joined ${correctDateFormat}`)
-bio = checkIfHasBio()
+	const bio = checkIfHasBio()
 	const repos = (document.querySelector('#repos').textContent = data.public_repos)
 	const followers = (document.querySelector('#followers').textContent = data.followers)
 	const following = (document.querySelector('#following').textContent = data.following)
