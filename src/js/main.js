@@ -47,17 +47,19 @@ const getUserData = function (userName) {
 		})
 		.then(data => renderUser(data))
 	// .catch(err => console.error('No results'))
-	//muszę rozdzielić błąd z połączeniem internetowym z brakiem usera - sprawdzić dokładnie jeszcze raz jak ma zapisaną funkcję renderError tak, żebym mogła mieć dwa komunikaty i żeby po kliknięciu na button ten komunikat zniknął (na początku addEventListenera dodać pusty textContent)
 }
 
 const renderUser = function (data) {
-	console.log(data.location)
+	console.log(data.blog.length)
 
 	//SETTING THE CORRECT DATE'S FORMAT
+
 	const options = { year: 'numeric', month: 'short', day: 'numeric' }
 	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
 	console.log(correctDateFormat)
+
 	//CHECKING IF THE USER SET THE NAME
+
 	const correctName = name => {
 		if (data.name !== null) {
 			name = document.querySelector('#name').textContent = data.name
@@ -73,11 +75,25 @@ const renderUser = function (data) {
 			bio1.classList.add('overview__bio--transparency')
 		} else {
 			bio1 = document.querySelector('#bio')
-			bio1.textContent =  data.bio
+			bio1.textContent = data.bio
 			bio1.classList.remove('overview__bio--transparency')
 		}
 	}
+
+	//CHECKING IF THE USER SET LOCATION / WEBSITE ADDRESS / TWITTER / COMPANY DETAILS
+
+	let checkIfHasNoContactDetails = (data, variable) => {
+		if (data === null || data.length === 0) {
+			variable.textContent = 'Not available'
+			variable.classList.add('contact__box--transparency')
+		} else {
+			variable.textContent = data
+			variable.classList.remove('contact__box--transparency')
+		}
+	}
+
 	//SETTING THE USER DATA FROM API
+
 	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
 	const name = correctName()
 	const login = (document.querySelector('#username').textContent = `@${data.login}`)
@@ -86,11 +102,17 @@ const renderUser = function (data) {
 	const repos = (document.querySelector('#repos').textContent = data.public_repos)
 	const followers = (document.querySelector('#followers').textContent = data.followers)
 	const following = (document.querySelector('#following').textContent = data.following)
-	const location = (document.querySelector('#location').textContent = data.location)
-	const website = (document.querySelector('#website').textContent = data.blog)
-	const twitter = (document.querySelector('#twitter').textContent = data.twitter_username)
-	const company = (document.querySelector('#company').textContent = data.company)
+	const location = document.querySelector('#location')
+	checkIfHasNoContactDetails(data.location, location)
+	const website = document.querySelector('#website')
+	 checkIfHasNoContactDetails(data.blog, website)
+	const twitter = document.querySelector('#twitter')
+	checkIfHasNoContactDetails( data.twitter_username, twitter)
+	const company = document.querySelector('#company')
+	checkIfHasNoContactDetails( data.company,company )
 }
+
+//addEventListeners
 
 searchButton.addEventListener('click', e => {
 	e.preventDefault()

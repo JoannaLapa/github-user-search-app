@@ -468,6 +468,10 @@ color: var(--text-8)
 		}
 	}
 
+	&__box--transparency {
+		opacity: 0.5;
+	}
+
 	&__details {
 		font-size: 1.3rem;
 		transition: text-decoration 0.3s;
