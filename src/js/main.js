@@ -50,7 +50,8 @@ const getUserData = function (userName) {
 }
 
 const renderUser = function (data) {
-	console.log(data.blog.length)
+	console.log(data.twitter_username)
+	console.log(data.url)
 
 	//SETTING THE CORRECT DATE'S FORMAT
 
@@ -80,15 +81,41 @@ const renderUser = function (data) {
 		}
 	}
 
-	//CHECKING IF THE USER SET LOCATION / WEBSITE ADDRESS / TWITTER / COMPANY DETAILS
-
-	let checkIfHasNoContactDetails = (data, variable) => {
-		if (data === null || data.length === 0) {
-			variable.textContent = 'Not available'
-			variable.classList.add('contact__box--transparency')
+	//CHECKING IF THE USER SET LOCATION
+	const checkIfHasNoLocation = () => {
+		const location = document.querySelector('#location')
+		const locationBox = document.querySelector('#location-box')
+		if (data.location === null || data.location === 0) {
+			location.textContent = 'Not available'
+			locationBox.classList.add('contact__box--transparency')
 		} else {
-			variable.textContent = data
-			variable.classList.remove('contact__box--transparency')
+			location.textContent = data.location
+			locationBox.classList.remove('contact__box--transparency')
+		}
+	}
+
+	// CHECKING IF THE USER SET WEBSITE ADDRESS / COMPANY DETAILS
+
+	let checkIfHasNoContactDetails = (dataTitle, dataURL, element, box) => {
+		if (dataTitle === null || dataTitle.length === 0) {
+			element.textContent = 'Not available'
+			box.classList.add('contact__box--transparency')
+		} else {
+			element.textContent = dataTitle
+			element.href = `${dataURL}`
+			box.classList.remove('contact__box--transparency')
+		}
+	}
+
+	//CHECKING IF THE USER SET TWITTER DETAILS
+	const checkIfHasTwitter = () => {
+		if (data.twitter_username === null || data.twitter_username.length === 0) {
+			twitter.textContent = 'Not available'
+			twitterBox.classList.add('contact__box--transparency')
+		} else {
+			twitter.textContent = data.twitter_username
+			twitter.href = `http://twitter.com/${data.twitter_username}`
+			twitterBox.classList.remove('contact__box--transparency')
 		}
 	}
 
@@ -102,14 +129,16 @@ const renderUser = function (data) {
 	const repos = (document.querySelector('#repos').textContent = data.public_repos)
 	const followers = (document.querySelector('#followers').textContent = data.followers)
 	const following = (document.querySelector('#following').textContent = data.following)
-	const location = document.querySelector('#location')
-	checkIfHasNoContactDetails(data.location, location)
+	checkIfHasNoLocation()
 	const website = document.querySelector('#website')
-	 checkIfHasNoContactDetails(data.blog, website)
+	const websiteBox = document.querySelector('#website-box')
+	checkIfHasNoContactDetails(data.blog, data.blog, website, websiteBox)
 	const twitter = document.querySelector('#twitter')
-	checkIfHasNoContactDetails( data.twitter_username, twitter)
+	const twitterBox = document.querySelector('#twitter-box')
+	checkIfHasTwitter()
 	const company = document.querySelector('#company')
-	checkIfHasNoContactDetails( data.company,company )
+	const companyBox = document.querySelector('#company-box')
+	checkIfHasNoContactDetails(data.company, data.html_url, company, companyBox)
 }
 
 //addEventListeners
