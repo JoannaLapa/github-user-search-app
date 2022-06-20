@@ -474,6 +474,7 @@ color: var(--text-8)
 
 	&__details {
 		font-size: 1.3rem;
+		text-decoration: none;
 		transition: text-decoration 0.3s;
 		cursor: pointer;
 		&:hover {
@@ -482,6 +483,13 @@ color: var(--text-8)
 
 		@include m.respond-to('medium') {
 			font-size: f.$fz-150;
+		}
+	}
+	&__details--text-decoration {
+		cursor: auto;
+		text-decoration: none;
+		&:hover {
+			text-decoration: none;
 		}
 	}
 }

@@ -50,7 +50,7 @@ const getUserData = function (userName) {
 }
 
 const renderUser = function (data) {
-	console.log(data.twitter_username)
+	console.log(data.blog)
 	console.log(data.url)
 
 	//SETTING THE CORRECT DATE'S FORMAT
@@ -83,7 +83,7 @@ const renderUser = function (data) {
 
 	//CHECKING IF THE USER SET LOCATION
 	const checkIfHasNoLocation = () => {
-		const location = document.querySelector('#location')
+		let location = document.querySelector('#location')
 		const locationBox = document.querySelector('#location-box')
 		if (data.location === null || data.location === 0) {
 			location.textContent = 'Not available'
@@ -94,16 +94,68 @@ const renderUser = function (data) {
 		}
 	}
 
-	// CHECKING IF THE USER SET WEBSITE ADDRESS / COMPANY DETAILS
+	// CHECKING IF THE USER SET WEBSITE ADDRESS
 
-	let checkIfHasNoContactDetails = (dataTitle, dataURL, element, box) => {
-		if (dataTitle === null || dataTitle.length === 0) {
-			element.textContent = 'Not available'
-			box.classList.add('contact__box--transparency')
+	const checkIfHasNoWebsite = () => {
+		const website = document.querySelector('#website')
+		const websiteBox = document.querySelector('#website-box')
+
+		//CHECKING IF THE URL HTTP IS VALID
+		function isValidHttpUrl(string) {
+			let url
+
+			try {
+				url = new URL(string)
+			} catch (_) {
+				return false
+			}
+
+			return url.protocol === 'http:' || url.protocol === 'https:'
+		}
+
+		if (data.blog === null || data.blog.length === 0) {
+			website.textContent = 'Not available'
+			website.classList.add('contact__details--text-decoration')
+			websiteBox.classList.add('contact__box--transparency')
+		} else if (!data.blog.includes('http')) {
+			if (isValidHttpUrl((website.href = `http://${data.blog}`)) === false) {
+				website.textContent = data.blog
+				website.href = `https://${data.blog}`
+				website.classList.remove('contact__details--text-decoration')
+				websiteBox.classList.remove('contact__box--transparency')
+			} else {
+				website.textContent = data.blog
+				website.href = `http://${data.blog}`
+				website.classList.remove('contact__details--text-decoration')
+				websiteBox.classList.remove('contact__box--transparency')
+			}
 		} else {
-			element.textContent = dataTitle
-			element.href = `${dataURL}`
-			box.classList.remove('contact__box--transparency')
+			website.textContent = data.blog
+			website.href = `${data.blog}`
+			website.classList.remove('contact__details--text-decoration')
+			websiteBox.classList.remove('contact__box--transparency')
+		}
+	}
+
+	// CHECKING IF THE USER SET COMPANY DETAILS
+
+	const checkIfHasNoCompanyDetails = () => {
+		const company = document.querySelector('#company')
+		const companyBox = document.querySelector('#company-box')
+		if (data.company === null || data.company.length === 0) {
+			company.textContent = 'Not available'
+			company.classList.add('contact__details--text-decoration')
+			companyBox.classList.add('contact__box--transparency')
+		} else if (data.company.charAt(0) == '@') {
+			company.textContent = `${data.company}`
+			company.href = `https://github.com/${data.company.substring(1)}`
+			company.classList.remove('contact__details--text-decoration')
+			companyBox.classList.remove('contact__box--transparency')
+		} else {
+			company.textContent = `${data.company}`
+			company.href = `https://github.com/${data.company}`
+			company.classList.remove('contact__details--text-decoration')
+			companyBox.classList.remove('contact__box--transparency')
 		}
 	}
 
@@ -111,10 +163,12 @@ const renderUser = function (data) {
 	const checkIfHasTwitter = () => {
 		if (data.twitter_username === null || data.twitter_username.length === 0) {
 			twitter.textContent = 'Not available'
+			twitter.classList.add('contact__details--text-decoration')
 			twitterBox.classList.add('contact__box--transparency')
 		} else {
 			twitter.textContent = data.twitter_username
 			twitter.href = `http://twitter.com/${data.twitter_username}`
+			twitter.classList.remove('contact__details--text-decoration')
 			twitterBox.classList.remove('contact__box--transparency')
 		}
 	}
@@ -130,15 +184,11 @@ const renderUser = function (data) {
 	const followers = (document.querySelector('#followers').textContent = data.followers)
 	const following = (document.querySelector('#following').textContent = data.following)
 	checkIfHasNoLocation()
-	const website = document.querySelector('#website')
-	const websiteBox = document.querySelector('#website-box')
-	checkIfHasNoContactDetails(data.blog, data.blog, website, websiteBox)
+	checkIfHasNoCompanyDetails()
+	checkIfHasNoWebsite()
 	const twitter = document.querySelector('#twitter')
 	const twitterBox = document.querySelector('#twitter-box')
 	checkIfHasTwitter()
-	const company = document.querySelector('#company')
-	const companyBox = document.querySelector('#company-box')
-	checkIfHasNoContactDetails(data.company, data.html_url, company, companyBox)
 }
 
 //addEventListeners
