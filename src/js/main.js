@@ -5,10 +5,8 @@ const searchButton = document.querySelector('#search__button')
 const searchInput = document.querySelector('#search__input')
 const body = document.querySelector('body')
 const headerWrapper = document.querySelector('#header__wrapper')
-let searchErrorMessage = document.querySelector('#error-message')
+const searchErrorMessage = document.querySelector('#error-message')
 let theme = localStorage.getItem('theme') || 'light'
-let userName = 'octokat'
-const userURL = URL
 
 const changeColorScreenMode = () => {
 	if (
@@ -46,44 +44,51 @@ const getUserData = function (userName) {
 			return response.json()
 		})
 		.then(data => renderUser(data))
-	// .catch(err => console.error('No results'))
+		.catch(err => console.error('No results'))
+}
+
+const removeClassesFromElement = (element, elementBox) => {
+	element.classList.remove('contact__details--text-decoration')
+	elementBox.classList.remove('contact__box--transparency')
+}
+
+const addClassesToElement = (element, elementBox) => {
+	element.textContent = 'Not available'
+	element.classList.add('contact__details--text-decoration')
+	elementBox.classList.add('contact__box--transparency')
 }
 
 const renderUser = function (data) {
-	console.log(data.blog)
-	console.log(data.url)
-
 	//SETTING THE CORRECT DATE'S FORMAT
 
 	const options = { year: 'numeric', month: 'short', day: 'numeric' }
 	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
-	console.log(correctDateFormat)
 
 	//CHECKING IF THE USER SET THE NAME
 
-	const correctName = name => {
+	const correctName = () => {
+		const name = document.querySelector('#name')
 		if (data.name !== null) {
-			name = document.querySelector('#name').textContent = data.name
+			name.textContent = data.name
 		} else {
-			name = document.querySelector('#name').textContent = data.login
+			name.textContent = data.login
 		}
 	}
 	//CHECKING IS THE USER SET THE BIO
-	const checkIfHasBio = bio1 => {
+	const checkIfHasBio = () => {
+		const bio = document.querySelector('#bio')
 		if (data.bio === null) {
-			bio1 = document.querySelector('#bio')
-			bio1.textContent = 'This profile has no bio'
-			bio1.classList.add('overview__bio--transparency')
+			bio.textContent = 'This profile has no bio'
+			bio.classList.add('overview__bio--transparency')
 		} else {
-			bio1 = document.querySelector('#bio')
-			bio1.textContent = data.bio
-			bio1.classList.remove('overview__bio--transparency')
+			bio.textContent = data.bio
+			bio.classList.remove('overview__bio--transparency')
 		}
 	}
 
 	//CHECKING IF THE USER SET LOCATION
 	const checkIfHasNoLocation = () => {
-		let location = document.querySelector('#location')
+		const location = document.querySelector('#location')
 		const locationBox = document.querySelector('#location-box')
 		if (data.location === null || data.location === 0) {
 			location.textContent = 'Not available'
@@ -114,26 +119,22 @@ const renderUser = function (data) {
 		}
 
 		if (data.blog === null || data.blog.length === 0) {
-			website.textContent = 'Not available'
-			website.classList.add('contact__details--text-decoration')
-			websiteBox.classList.add('contact__box--transparency')
+			website.href = ''
+			addClassesToElement(website, websiteBox)
 		} else if (!data.blog.includes('http')) {
 			if (isValidHttpUrl((website.href = `http://${data.blog}`)) === false) {
 				website.textContent = data.blog
 				website.href = `https://${data.blog}`
-				website.classList.remove('contact__details--text-decoration')
-				websiteBox.classList.remove('contact__box--transparency')
+				removeClassesFromElement(website, websiteBox)
 			} else {
 				website.textContent = data.blog
 				website.href = `http://${data.blog}`
-				website.classList.remove('contact__details--text-decoration')
-				websiteBox.classList.remove('contact__box--transparency')
+				removeClassesFromElement(website, websiteBox)
 			}
 		} else {
 			website.textContent = data.blog
 			website.href = `${data.blog}`
-			website.classList.remove('contact__details--text-decoration')
-			websiteBox.classList.remove('contact__box--transparency')
+			removeClassesFromElement(website, websiteBox)
 		}
 	}
 
@@ -143,33 +144,26 @@ const renderUser = function (data) {
 		const company = document.querySelector('#company')
 		const companyBox = document.querySelector('#company-box')
 		if (data.company === null || data.company.length === 0) {
-			company.textContent = 'Not available'
-			company.classList.add('contact__details--text-decoration')
-			companyBox.classList.add('contact__box--transparency')
+			addClassesToElement(company, companyBox)
 		} else if (data.company.charAt(0) == '@') {
 			company.textContent = `${data.company}`
 			company.href = `https://github.com/${data.company.substring(1)}`
-			company.classList.remove('contact__details--text-decoration')
-			companyBox.classList.remove('contact__box--transparency')
+			removeClassesFromElement(company, companyBox)
 		} else {
 			company.textContent = `${data.company}`
 			company.href = `https://github.com/${data.company}`
-			company.classList.remove('contact__details--text-decoration')
-			companyBox.classList.remove('contact__box--transparency')
+			removeClassesFromElement(company, companyBox)
 		}
 	}
 
 	//CHECKING IF THE USER SET TWITTER DETAILS
 	const checkIfHasTwitter = () => {
 		if (data.twitter_username === null || data.twitter_username.length === 0) {
-			twitter.textContent = 'Not available'
-			twitter.classList.add('contact__details--text-decoration')
-			twitterBox.classList.add('contact__box--transparency')
+			addClassesToElement(twitter, twitterBox)
 		} else {
 			twitter.textContent = data.twitter_username
 			twitter.href = `http://twitter.com/${data.twitter_username}`
-			twitter.classList.remove('contact__details--text-decoration')
-			twitterBox.classList.remove('contact__box--transparency')
+			removeClassesFromElement(twitter, twitterBox)
 		}
 	}
 
@@ -179,7 +173,7 @@ const renderUser = function (data) {
 	const name = correctName()
 	const login = (document.querySelector('#username').textContent = `@${data.login}`)
 	const joinedDate = (document.querySelector('#joined-date').textContent = `Joined ${correctDateFormat}`)
-	const bio = checkIfHasBio()
+	checkIfHasBio()
 	const repos = (document.querySelector('#repos').textContent = data.public_repos)
 	const followers = (document.querySelector('#followers').textContent = data.followers)
 	const following = (document.querySelector('#following').textContent = data.following)
@@ -196,7 +190,7 @@ const renderUser = function (data) {
 searchButton.addEventListener('click', e => {
 	e.preventDefault()
 	searchErrorMessage.textContent = ''
-	userName = searchInput.value.split(' ').join('')
+	const userName = searchInput.value.split(' ').join('')
 	getUserData(userName)
 	searchInput.value = ''
 })
