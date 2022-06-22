@@ -158,6 +158,8 @@ const renderUser = function (data) {
 
 	//CHECKING IF THE USER SET TWITTER DETAILS
 	const checkIfHasTwitter = () => {
+		const twitter = document.querySelector('#twitter')
+		const twitterBox = document.querySelector('#twitter-box')
 		if (data.twitter_username === null || data.twitter_username.length === 0) {
 			addClassesToElement(twitter, twitterBox)
 		} else {
@@ -180,8 +182,6 @@ const renderUser = function (data) {
 	checkIfHasNoLocation()
 	checkIfHasNoCompanyDetails()
 	checkIfHasNoWebsite()
-	const twitter = document.querySelector('#twitter')
-	const twitterBox = document.querySelector('#twitter-box')
 	checkIfHasTwitter()
 }
 
