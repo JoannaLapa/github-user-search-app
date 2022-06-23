@@ -66,7 +66,7 @@ const renderUser = function (data) {
 
 	//CHECKING IF THE USER SET THE NAME
 
-	const correctName = () => {
+	const checkiIfHasName = () => {
 		const name = document.querySelector('#name')
 		if (data.name !== null) {
 			name.textContent = data.name
@@ -172,7 +172,7 @@ const renderUser = function (data) {
 	//SETTING THE USER DATA FROM API
 
 	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
-	const name = correctName()
+	const name = checkiIfHasName()
 	const login = (document.querySelector('#username').textContent = `@${data.login}`)
 	const joinedDate = (document.querySelector('#joined-date').textContent = `Joined ${correctDateFormat}`)
 	checkIfHasBio()
