@@ -8,6 +8,7 @@ const headerWrapper = document.querySelector('#header__wrapper')
 const searchErrorMessage = document.querySelector('#error-message')
 let theme = localStorage.getItem('theme') || 'light'
 
+//CHANGING COLOR SCREEN MODE
 const changeColorScreenMode = () => {
 	if (
 		window.matchMedia('(prefers-color-scheme: dark)').matches === true &&
@@ -31,10 +32,127 @@ const changeColorScreenMode = () => {
 	localStorage.setItem('theme', theme)
 }
 
-const renderError = msg => {
-	searchErrorMessage.textContent = msg
+//PRINTING ERROR MESSAGE
+const renderError = msg => (searchErrorMessage.textContent = msg)
+
+//CHECKING IF THE USER SET THE NAME
+const checkiIfHasName = data => {
+	const name = document.querySelector('#name')
+	if (data.name !== null) {
+		name.textContent = data.name
+	} else {
+		name.textContent = data.login
+	}
+	return name
 }
 
+//SETTING THE CORRECT DATE'S FORMAT
+const setCorrecJoinedDate = data => {
+	const options = { year: 'numeric', month: 'short', day: 'numeric' }
+	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
+	const joinedDate = (document.querySelector('#joined-date').textContent = `Joined ${correctDateFormat}`)
+	return joinedDate
+}
+
+//CHECKING IS THE USER SET THE BIO
+const checkIfHasBio = data => {
+	const bio = document.querySelector('#bio')
+	if (data.bio === null) {
+		bio.textContent = 'This profile has no bio'
+		bio.classList.add('overview__bio--transparency')
+	} else {
+		bio.textContent = data.bio
+		bio.classList.remove('overview__bio--transparency')
+	}
+	return bio
+}
+
+//CHECKING IF THE USER SET LOCATION
+const checkIfHasNoLocation = data => {
+	const location = document.querySelector('#location')
+	const locationBox = document.querySelector('#location-box')
+	if (data.location === null || data.location === 0) {
+		location.textContent = 'Not available'
+		locationBox.classList.add('contact__box--transparency')
+	} else {
+		location.textContent = data.location
+		locationBox.classList.remove('contact__box--transparency')
+	}
+	return location, locationBox
+}
+
+// CHECKING IF THE USER SET COMPANY DETAILS
+const checkIfHasNoCompanyDetails = data => {
+	const company = document.querySelector('#company')
+	const companyBox = document.querySelector('#company-box')
+	if (data.company === null || data.company.length === 0) {
+		addClassesToElement(company, companyBox)
+	} else if (data.company.charAt(0) == '@') {
+		company.textContent = `${data.company}`
+		company.href = `https://github.com/${data.company.substring(1)}`
+		removeClassesFromElement(company, companyBox)
+	} else {
+		company.textContent = `${data.company}`
+		company.href = `https://github.com/${data.company}`
+		removeClassesFromElement(company, companyBox)
+	}
+	return company, companyBox
+}
+
+//CHECKING IF THE URL HTTP IS VALID
+function isValidHttpUrl(string) {
+	let url
+
+	try {
+		url = new URL(string)
+	} catch (_) {
+		return false
+	}
+
+	return url.protocol === 'http:' || url.protocol === 'https:'
+}
+
+// CHECKING IF THE USER SET WEBSITE ADDRESS
+const checkIfHasNoWebsite = data => {
+	const website = document.querySelector('#website')
+	const websiteBox = document.querySelector('#website-box')
+
+	if (data.blog === null || data.blog.length === 0) {
+		website.href = ''
+		addClassesToElement(website, websiteBox)
+	} else if (!data.blog.includes('http')) {
+		if (isValidHttpUrl((website.href = `http://${data.blog}`)) === false) {
+			website.textContent = data.blog
+			website.href = `https://${data.blog}`
+			removeClassesFromElement(website, websiteBox)
+		} else {
+			website.textContent = data.blog
+			website.href = `http://${data.blog}`
+			removeClassesFromElement(website, websiteBox)
+		}
+	} else {
+		website.textContent = data.blog
+		website.href = `${data.blog}`
+		removeClassesFromElement(website, websiteBox)
+	}
+	return website, websiteBox
+}
+
+//CHECKING IF THE USER SET TWITTER DETAILS
+const checkIfHasTwitter = data => {
+	const twitter = document.querySelector('#twitter')
+	const twitterBox = document.querySelector('#twitter-box')
+	if (data.twitter_username === null || data.twitter_username.length === 0) {
+		addClassesToElement(twitter, twitterBox)
+	} else {
+		twitter.textContent = data.twitter_username
+		twitter.href = `http://twitter.com/${data.twitter_username}`
+		removeClassesFromElement(twitter, twitterBox)
+	}
+	return twitter, twitterBox
+}
+
+//GETTING USER DATA FROM API
 const getUserData = function (userName) {
 	fetch(`https://api.github.com/users/${userName}`)
 		.then(response => {
@@ -47,11 +165,13 @@ const getUserData = function (userName) {
 		.catch(err => console.error('No results'))
 }
 
+//REMOVING UNDERLINE AND TRANSPARENCY ON THE ELEMENT
 const removeClassesFromElement = (element, elementBox) => {
 	element.classList.remove('contact__details--text-decoration')
 	elementBox.classList.remove('contact__box--transparency')
 }
 
+//ADDING  UNDERLINE AND TRANSPARENCY ON THE ELEMENT
 const addClassesToElement = (element, elementBox) => {
 	element.textContent = 'Not available'
 	element.classList.add('contact__details--text-decoration')
@@ -59,130 +179,19 @@ const addClassesToElement = (element, elementBox) => {
 }
 
 const renderUser = function (data) {
-	//SETTING THE CORRECT DATE'S FORMAT
-
-	const options = { year: 'numeric', month: 'short', day: 'numeric' }
-	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
-
-	//CHECKING IF THE USER SET THE NAME
-
-	const checkiIfHasName = () => {
-		const name = document.querySelector('#name')
-		if (data.name !== null) {
-			name.textContent = data.name
-		} else {
-			name.textContent = data.login
-		}
-	}
-	//CHECKING IS THE USER SET THE BIO
-	const checkIfHasBio = () => {
-		const bio = document.querySelector('#bio')
-		if (data.bio === null) {
-			bio.textContent = 'This profile has no bio'
-			bio.classList.add('overview__bio--transparency')
-		} else {
-			bio.textContent = data.bio
-			bio.classList.remove('overview__bio--transparency')
-		}
-	}
-
-	//CHECKING IF THE USER SET LOCATION
-	const checkIfHasNoLocation = () => {
-		const location = document.querySelector('#location')
-		const locationBox = document.querySelector('#location-box')
-		if (data.location === null || data.location === 0) {
-			location.textContent = 'Not available'
-			locationBox.classList.add('contact__box--transparency')
-		} else {
-			location.textContent = data.location
-			locationBox.classList.remove('contact__box--transparency')
-		}
-	}
-
-	// CHECKING IF THE USER SET WEBSITE ADDRESS
-
-	const checkIfHasNoWebsite = () => {
-		const website = document.querySelector('#website')
-		const websiteBox = document.querySelector('#website-box')
-
-		//CHECKING IF THE URL HTTP IS VALID
-		function isValidHttpUrl(string) {
-			let url
-
-			try {
-				url = new URL(string)
-			} catch (_) {
-				return false
-			}
-
-			return url.protocol === 'http:' || url.protocol === 'https:'
-		}
-
-		if (data.blog === null || data.blog.length === 0) {
-			website.href = ''
-			addClassesToElement(website, websiteBox)
-		} else if (!data.blog.includes('http')) {
-			if (isValidHttpUrl((website.href = `http://${data.blog}`)) === false) {
-				website.textContent = data.blog
-				website.href = `https://${data.blog}`
-				removeClassesFromElement(website, websiteBox)
-			} else {
-				website.textContent = data.blog
-				website.href = `http://${data.blog}`
-				removeClassesFromElement(website, websiteBox)
-			}
-		} else {
-			website.textContent = data.blog
-			website.href = `${data.blog}`
-			removeClassesFromElement(website, websiteBox)
-		}
-	}
-
-	// CHECKING IF THE USER SET COMPANY DETAILS
-
-	const checkIfHasNoCompanyDetails = () => {
-		const company = document.querySelector('#company')
-		const companyBox = document.querySelector('#company-box')
-		if (data.company === null || data.company.length === 0) {
-			addClassesToElement(company, companyBox)
-		} else if (data.company.charAt(0) == '@') {
-			company.textContent = `${data.company}`
-			company.href = `https://github.com/${data.company.substring(1)}`
-			removeClassesFromElement(company, companyBox)
-		} else {
-			company.textContent = `${data.company}`
-			company.href = `https://github.com/${data.company}`
-			removeClassesFromElement(company, companyBox)
-		}
-	}
-
-	//CHECKING IF THE USER SET TWITTER DETAILS
-	const checkIfHasTwitter = () => {
-		const twitter = document.querySelector('#twitter')
-		const twitterBox = document.querySelector('#twitter-box')
-		if (data.twitter_username === null || data.twitter_username.length === 0) {
-			addClassesToElement(twitter, twitterBox)
-		} else {
-			twitter.textContent = data.twitter_username
-			twitter.href = `http://twitter.com/${data.twitter_username}`
-			removeClassesFromElement(twitter, twitterBox)
-		}
-	}
-
 	//SETTING THE USER DATA FROM API
-
 	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
-	const name = checkiIfHasName()
+	const name = checkiIfHasName(data)
 	const login = (document.querySelector('#username').textContent = `@${data.login}`)
-	const joinedDate = (document.querySelector('#joined-date').textContent = `Joined ${correctDateFormat}`)
-	checkIfHasBio()
+	const joinedDate = setCorrecJoinedDate(data)
+	const bio = checkIfHasBio(data)
 	const repos = (document.querySelector('#repos').textContent = data.public_repos)
 	const followers = (document.querySelector('#followers').textContent = data.followers)
 	const following = (document.querySelector('#following').textContent = data.following)
-	checkIfHasNoLocation()
-	checkIfHasNoCompanyDetails()
-	checkIfHasNoWebsite()
-	checkIfHasTwitter()
+	const location = checkIfHasNoLocation(data)
+	const company = checkIfHasNoCompanyDetails(data)
+	const website = checkIfHasNoWebsite(data)
+	const twitter = checkIfHasTwitter(data)
 }
 
 //addEventListeners
