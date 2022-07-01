@@ -18,10 +18,10 @@ body.light {
 	@extend %light-mode;
 }
 body.light {
-	.screen-mode--light {
-		display: inline;
+	.screen-mode__box--light {
+		display: flex;
 	}
-	.screen-mode--dark {
+	.screen-mode__box--dark {
 		display: none;
 	}
 }
@@ -35,11 +35,11 @@ body {
 
 body.dark {
 	@extend %dark-mode;
-	.screen-mode--light {
+	.screen-mode__box--light {
 		display: none;
 	}
-	.screen-mode--dark {
-		display: inline;
+	.screen-mode__box--dark {
+		display: flex;
 	}
 }
 
@@ -99,6 +99,13 @@ body.dark {
 	@include m.respond-to('medium') {
 		max-width: 7.8rem;
 	}
+
+	&__box {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 1.6rem;
+	}
 }
 
 .main__container {
@@ -115,11 +122,13 @@ body.dark {
 
 	&__icon {
 		margin-left: 1.6rem;
+		margin-right: 0.895rem;
 		width: 2.05rem;
 		height: 2rem;
 
 		@include m.respond-to('medium') {
 			margin-left: 3.2rem;
+			margin-right: 2.394rem;
 			width: 2.406rem;
 			height: 2.4rem;
 		}
@@ -127,15 +136,15 @@ body.dark {
 
 	&__input {
 		@extend %flex-row-space-between;
-		// @extend %fz-130-line-height-130;
 		flex-grow: 2;
 		width: 100%;
 		min-height: 2.5rem;
 		border: none;
 		background-color: var(--background-2);
 		color: var(--text-6);
-		
+	
 		cursor: pointer;
+
 		&::placeholder {
 			color: var(--text-2);
 			text-align: left;
@@ -148,8 +157,16 @@ body.dark {
 			}
 		}
 
+		&:placeholder-shown {
+			text-indent: -0.5rem;
+
+			@include m.respond-to('small') {
+				text-indent: -1rem;
+			}
+		}
+
 		&:focus {
-			outline: none; //czymś muszę zastąpić outlina
+			outline: none; 
 		}
 	}
 
@@ -174,11 +191,11 @@ body.dark {
 			font-size: f.$fz-150;
 		}
 	}
-&__error-message-box{
-	display: none;
-	text-align: right;
-	width: 100%;
-}
+	&__error-message-box {
+		display: none;
+		text-align: right;
+		width: 100%;
+	}
 	&__button {
 		margin-right: 0.7rem;
 		padding: 1.6rem 1.25rem;
@@ -538,10 +555,10 @@ footer {
 		--background-image-hover: url('./src/img/icon-sun-hover.svg');
 		--box-shadow: none;
 	}
-	.screen-mode--light {
+	.screen-mode__box--light {
 		display: none;
 	}
-	.screen-mode--dark {
-		display: inline;
+	.screen-mode__box--dark {
+		display: flex;
 	}
 }

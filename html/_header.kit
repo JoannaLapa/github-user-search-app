@@ -2,7 +2,14 @@
     <div class="header__wrapper" id="header__wrapper">
         <span class="header__app-name">devfinder</span>
         <button class="screen-mode" aria-label="night mode switch" id="screen-mode__button">
-            <span class="screen-mode--dark">LIGHT</span>
-            <span class="screen-mode--light">DARK</span></button>
+            <div class="screen-mode__box--light screen-mode__box">
+                <span class="screen-mode--light">DARK</span>
+                <img class="screen-mode__img--light" src="/src/img/icon-moon.svg" alt="">
+            </div>
+            <div class="screen-mode__box--dark screen-mode__box">
+                <span class="screen-mode--dark">LIGHT</span>
+                <img class="screen-mode__img--dark" src="/src/img/icon-sun.svg" alt="">
+            </div>
+        </button>
     </div>
 </header>

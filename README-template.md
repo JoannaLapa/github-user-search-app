@@ -96,9 +96,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 ### Useful resources
 
 - [CSS tricks1](https://css-tricks.com/scale-svg/) - This helped me scale svg image.
-- [Example resource 2](https://css-tricks.com/positioning-offset-background-images/) - This article helped mi with positioning search icon.
-https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/ - by  this article I learnt about managing breakpoints with mixins
-https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript - by this article I found a solution how to convert ISO date format from API data into the format given in figma file.
+- [CSS tricks](https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/) - by  this article I learnt about managing breakpoints with mixins
+- [CSS tricks](https://css-tricks.com/almanac/selectors/p/placeholder/) - With this article I learnt about styling ::placeholder pseudo element and :placeholder-shown pseudo class
+- [Stackoverflow](https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript) - by this article I found a solution how to convert ISO date format from API data into the format given in figma file.
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
