@@ -6,6 +6,7 @@ const searchInput = document.querySelector('#search__input')
 const body = document.querySelector('body')
 const headerWrapper = document.querySelector('#header__wrapper')
 const searchErrorMessage = document.querySelector('#error-message')
+const searchErrorMessageBox = document.querySelector('#error-message-box')
 let theme = localStorage.getItem('theme') || 'light'
 
 //CHANGING COLOR SCREEN MODE
@@ -33,7 +34,11 @@ const changeColorScreenMode = () => {
 }
 
 //PRINTING ERROR MESSAGE
-const renderError = msg => (searchErrorMessage.textContent = msg)
+const renderError = msg => {
+	searchErrorMessage.textContent = msg
+	searchErrorMessageBox.style.display = 'inline-block'
+	return searchErrorMessage, searchErrorMessageBox
+}
 
 //CHECKING IF THE USER SET THE NAME
 const checkiIfHasName = data => {
