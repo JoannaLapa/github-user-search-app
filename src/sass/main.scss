@@ -14,8 +14,14 @@
 	font-size: f.$fz-basic;
 }
 :root,
-body.light {
-	@extend %light-mode;
+body.dark {
+	@extend %dark-mode;
+	.screen-mode--light {
+		display: none;
+	}
+	.screen-mode--dark {
+		display: inline;
+	}
 }
 
 body {
@@ -26,6 +32,7 @@ body {
 }
 
 body.light {
+	@extend %light-mode;
 	.screen-mode--dark {
 		display: none;
 	}
@@ -35,7 +42,7 @@ body.light {
 }
 
 body.dark {
-	@extend %dark-mode;
+	
 	.screen-mode--light {
 		display: none;
 	}
@@ -230,7 +237,7 @@ body.dark {
 		}
 
 		@include m.respond-to('extra-large') {
-			width: 10.6rem;
+			width: 13.3rem;
 			min-height: 5rem;
 		}
 	}
@@ -259,7 +266,7 @@ body.dark {
 		@include m.respond-to('extra-large') {
 			display: grid;
 			grid: 33% 33% 34% / 12.2rem 1fr;
-			min-height: 32.3rem;
+			min-height: 32rem;
 		}
 	}
 }
@@ -315,6 +322,7 @@ body.dark {
 			height: 11.7rem;
 		}
 		@include m.respond-to('extra-large') {
+			margin-left:  0.5rem;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: flex-start;
@@ -375,6 +383,7 @@ body.dark {
 		@include m.respond-to('extra-large') {
 			order: 2;
 			justify-self: flex-end;
+			align-self: center;
 			text-align: right;
 		}
 	}
@@ -395,6 +404,7 @@ body.dark {
 		}
 
 		@include m.respond-to('extra-large') {
+			margin-left:  0.5rem;
 			grid-area: 2 / 2 / 3 / 3;
 			min-height: 2.5rem;
 		}
@@ -541,21 +551,25 @@ footer {
 	}
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
 	body {
-		--text-1: #ffffff;
-		--text-2: var(--text-1);
-		--text-4: var(--text-1);
-		--text-5: #90a4d4;
-		--text-6: var(--text-1);
+		--text-1: #2b3442;
+		--text-2: #4b6a9b;
+		--text-3: #ffffff;
+		--text-4: #697c9a;
+		--text-5: #222731;
+		--text-6: var(--text-5);
 		--text-7: #f74646;
-		--background-1: #141d2f;
-		--background-2: #1e2a47;
-		--background-3: var(--background-1);
-		--background-4: var(--background-1);
-		--background-image-main: url('../img/icon-sun.svg');
-		--background-image-hover: url('../img/icon-sun-hover.svg');
-		--box-shadow: none;
+		--text-8: rgba(75, 106, 155, 0.75);
+		--background-1: #f6f8ff;
+		--background-2: #fefefe;
+		--background-3: #f2f2f2;
+		--background-4: var(--text-3);
+		--background-5: #0079ff;
+		--background-6: #60abff;
+		--background-image-main: url('../img/icon-moon.svg');
+		--background-image-hover: url('../img/icon-moon-hover.svg');
+		--box-shadow: 0 1.6rem 3rem rgba(70, 95, 187, 0.1986);
 	}
 	.screen-mode--light {
 		display: none;

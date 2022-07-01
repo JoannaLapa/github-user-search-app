@@ -12,12 +12,12 @@ let theme = localStorage.getItem('theme') || 'light'
 //CHANGING COLOR SCREEN MODE
 const changeColorScreenMode = () => {
 	if (
-		window.matchMedia('(prefers-color-scheme: dark)').matches === true &&
+		window.matchMedia('(prefers-color-scheme: light)').matches === true &&
 		body.classList.contains('light') !== true &&
 		body.classList.contains('dark') !== true
 	) {
-		body.classList.add('light')
-		theme = 'light'
+		body.classList.add('dark')
+		theme = 'dark'
 		console.log(theme)
 	} else if (body.classList.contains('light')) {
 		body.classList.add('dark')
