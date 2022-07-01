@@ -14,9 +14,6 @@ This is a solution to the [GitHub user search app challenge on Frontend Mentor](
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -29,7 +26,7 @@ Users should be able to:
 - Search for GitHub users by their username
 - See relevant user information based on their search
 - Switch between light and dark themes
-- **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
+- Have the correct color scheme chosen for them based on their computer preferences. 
 
 ### Screenshot
 
@@ -45,8 +42,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub](https://github.com/JoannaLapa/github-user-search-app)
+- Live Site URL: [GitHub Pages](https://joannalapa.github.io/github-user-search-app/)
 
 ## My process
 
@@ -57,41 +54,18 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- Gulp
+- SCSS
+- BEM
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+I learnt how to create breakpoints and extends with SCSS. I practiced JS and API skills.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I am still not enough compfortable with JS so next weeks I plan to focus on learning good practices and modern Javascript. 
 
 ### Useful resources
 
@@ -99,19 +73,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 - [CSS tricks](https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/) - by  this article I learnt about managing breakpoints with mixins
 - [CSS tricks](https://css-tricks.com/almanac/selectors/p/placeholder/) - With this article I learnt about styling ::placeholder pseudo element and :placeholder-shown pseudo class
 - [Stackoverflow](https://stackoverflow.com/questions/3552461/how-do-i-format-a-date-in-javascript) - by this article I found a solution how to convert ISO date format from API data into the format given in figma file.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- GitHub - [Joanna Łapa](https://github.com/JoannaLapa)
+- Frontend Mentor - [@JoannaLapa]https://www.frontendmentor.io/profile/JoannaLapa)
+- Twitter - [@jlapa_apa](https://www.twitter.com/jlapa_apa)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
