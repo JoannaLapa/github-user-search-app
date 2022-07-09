@@ -1,15 +1,20 @@
+/// Mixin to manage responsive breakpoints
+/// @author Kitty Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+
 $breakpoints: (
 	'extra-small': 375px,
 	'small': 630px,
-    'medium': 767px,
-    'large': 991px,
-    'extra-large': 1200px //design 1440/900
-)!default;
+	'medium': 767px,
+	'large': 991px,
+	'extra-large': 1200px //design 1440/900,
+) !default;
 
 $prefers-color-scheme: (
 	'dark': dark,
 	'light': light,
-)!default;
+) !default;
 
 @mixin respond-to($breakpoint) {
 	@if map-has-key($breakpoints, $breakpoint) {
@@ -20,6 +25,3 @@ $prefers-color-scheme: (
 		@warn 'Unfortunately no vlue can be retrievedfrom `#{$breakpoint}`.'+ 'Available breakpoints are: #{map-keys($breakpoints)}.';
 	}
 }
-
-
-

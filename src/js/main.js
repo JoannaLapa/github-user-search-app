@@ -33,27 +33,6 @@ const changeColorScreenMode = () => {
 	localStorage.setItem('theme', theme)
 }
 
-//HOVERING ICONS 
-const changeIconWhenMouseEnter = () => {
-if(screenModeBoxDark.style.display === 'flex'){
-	screenModeImgDark.src = 'src/img/icon-sun-hover.svg'
-	console.log('dark icon hove');
-	
-} else {
-	screenModeImgLight.src = 'src/img/icon-moon-hover.svg'
-	console.log('light icon hove');
-}
-}
-
-//HOVERING ICONS 
-const changeIconWhenMouseLeave = () => {
-	if(screenModeBoxDark.style.display === 'flex'){
-		screenModeImgDark.src = 'src/img/icon-sun.svg'
-	} else {
-		screenModeImgLight.src = 'src/img/icon-moon.svg'
-	}
-	}
-
 //PRINTING ERROR MESSAGE
 const renderError = msg => {
 	searchErrorMessage.textContent = msg
