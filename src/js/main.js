@@ -1,16 +1,12 @@
 'use strict'
 
-const screenModebutton = document.querySelector('#screen-mode__button')
-const searchButton = document.querySelector('#search__button')
-const searchInput = document.querySelector('#search__input')
-const body = document.querySelector('body')
-const headerWrapper = document.querySelector('#header__wrapper')
 const searchErrorMessage = document.querySelector('#error-message')
 const searchErrorMessageBox = document.querySelector('#error-message-box')
 let theme = localStorage.getItem('theme') || 'light'
 
 //CHANGING COLOR SCREEN MODE
 const changeColorScreenMode = () => {
+	const body = document.querySelector('body')
 	if (
 		window.matchMedia('(prefers-color-scheme: light)').matches === true &&
 		body.classList.contains('light') !== true &&
@@ -200,7 +196,8 @@ const renderUser = function (data) {
 }
 
 //ADDEVENTLISTENERS
-searchButton.addEventListener('click', e => {
+document.querySelector('#search__button').addEventListener('click', e => {
+	const searchInput = document.querySelector('#search__input')
 	e.preventDefault()
 	searchErrorMessage.textContent = ''
 	const userName = searchInput.value.split(' ').join('')
@@ -208,6 +205,6 @@ searchButton.addEventListener('click', e => {
 	searchInput.value = ''
 })
 
-screenModebutton.addEventListener('click', () => {
+document.querySelector('#screen-mode__button').addEventListener('click', () => {
 	changeColorScreenMode()
 })
