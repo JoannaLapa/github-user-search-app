@@ -183,8 +183,8 @@ const addClassesToElement = (element, elementBox) => {
 	elementBox.classList.add('contact__box--transparency')
 }
 
+//SETTING THE USER DATA FROM API
 const renderUser = function (data) {
-	//SETTING THE USER DATA FROM API
 	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
 	const name = checkiIfHasName(data)
 	const login = (document.querySelector('#username').textContent = `@${data.login}`)
@@ -199,8 +199,7 @@ const renderUser = function (data) {
 	const twitter = checkIfHasTwitter(data)
 }
 
-//addEventListeners
-
+//ADDEVENTLISTENERS
 searchButton.addEventListener('click', e => {
 	e.preventDefault()
 	searchErrorMessage.textContent = ''
@@ -212,5 +211,3 @@ searchButton.addEventListener('click', e => {
 screenModebutton.addEventListener('click', () => {
 	changeColorScreenMode()
 })
-
-
