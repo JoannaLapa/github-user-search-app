@@ -196,8 +196,8 @@ const renderUser = function (data) {
 }
 
 //ADDEVENTLISTENERS
-document.querySelector('#search__button').addEventListener('click', e => {
-	const searchInput = document.querySelector('#search__input')
+document.querySelector('#search-button').addEventListener('click', e => {
+	const searchInput = document.querySelector('#search-input')
 	e.preventDefault()
 	searchErrorMessage.textContent = ''
 	const userName = searchInput.value.split(' ').join('')
