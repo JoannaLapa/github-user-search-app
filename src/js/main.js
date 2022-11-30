@@ -205,6 +205,6 @@ document.querySelector('#search__button').addEventListener('click', e => {
 	searchInput.value = ''
 })
 
-document.querySelector('#screen-mode__button').addEventListener('click', () => {
+document.querySelector('#screen-mode-button').addEventListener('click', () => {
 	changeColorScreenMode()
 })
