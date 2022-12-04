@@ -20,12 +20,28 @@ body.dark {
 }
 
 body.dark .screen-mode--light {
-		display: none;
-	}
+	display: none;
+}
 
-body.dark .screen-mode--dark {
-		display: inline;
-	}
+body.dark .screen-mode__img--sun,
+body.light .screen-mode__img--moon,
+body.dark .screen-mode--dark,
+body.light .screen-mode--light,
+.screen-mode__img--sun {
+	display: inline;
+}
+
+body.dark .screen-mode__img--moon,
+body.light .screen-mode__img--sun,
+body.dark .screen-mode--light,
+body.light .screen-mode--dark,
+.screen-mode__img--moon {
+	display: none;
+}
+
+body.light {
+	@extend %light-mode;
+}
 
 body {
 	@extend %flex-column;
@@ -33,17 +49,6 @@ body {
 	font-family: 'Space Mono', monospace;
 	background-color: var(--background-4);
 }
-
-body.light {
-	@extend %light-mode;
-}
-
-body.light .screen-mode--dark{
-		display: none;
-	}
-body.light .screen-mode--light {
-		display: inline;
-	}
 
 .wrapper {
 	@extend %flex-column-space-evenly;
@@ -102,19 +107,21 @@ body.light .screen-mode--light {
 		color: var(--text-5);
 	}
 
-	&:hover .screen-mode__img-box {
-		background-image: var(--background-image-hover);
+	&:hover .screen-mode__img,
+	&:hover .screen-mode__img {
+		fill: var(--text-5);
 	}
 
 	&__img-box {
 		width: 2rem;
 		height: 2rem;
-		background-image: var(--background-image-main);
-		background-repeat: no-repeat;
+		// background-image: var(--background-image-main);
+		// background-repeat: no-repeat;
 	}
 
-	&--light {
-		display: none;
+	&__img {
+		fill: var(--text-2);
+		transition: fill 0.3s;
 	}
 }
 
@@ -557,7 +564,7 @@ footer {
 		--text-5: #222731;
 		--text-6: var(--text-5);
 		--text-7: #f74646;
-		--text-8: rgba(75, 106, 155, 0.75);
+		--text-8: #4b6a9bbf;
 		--background-1: #f6f8ff;
 		--background-2: #fefefe;
 		--background-3: #f2f2f2;
@@ -568,10 +575,12 @@ footer {
 		--background-image-hover: url('../img/icon-moon-hover.svg');
 		--box-shadow: 0 1.6rem 3rem rgba(70, 95, 187, 0.1986);
 	}
-	.screen-mode--light {
+	.screen-mode--light,
+	.screen-mode__img--moon {
 		display: inline;
 	}
-	.screen-mode--dark {
+	.screen-mode--dark,
+	.screen-mode__img--sun {
 		display: none;
 	}
 }
