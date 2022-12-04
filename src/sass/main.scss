@@ -13,12 +13,14 @@
 :root {
 	font-size: f.$fz-basic;
 }
+
 :root,
 body.dark {
 	@extend %dark-mode;
 	.screen-mode--light {
 		display: none;
 	}
+
 	.screen-mode--dark {
 		display: inline;
 	}
@@ -37,16 +39,6 @@ body.light {
 		display: none;
 	}
 	.screen-mode--light {
-		display: inline;
-	}
-}
-
-body.dark {
-	
-	.screen-mode--light {
-		display: none;
-	}
-	.screen-mode--dark {
 		display: inline;
 	}
 }
@@ -322,7 +314,7 @@ body.dark {
 			min-height: 11.7rem;
 		}
 		@include m.respond-to('extra-large') {
-			margin-left:  0.5rem;
+			margin-left: 0.5rem;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: flex-start;
@@ -404,7 +396,7 @@ body.dark {
 		}
 
 		@include m.respond-to('extra-large') {
-			margin-left:  0.5rem;
+			margin-left: 0.5rem;
 			grid-area: 2 / 2 / 3 / 3;
 			min-height: 2.5rem;
 		}
