@@ -17,14 +17,15 @@
 :root,
 body.dark {
 	@extend %dark-mode;
-	.screen-mode--light {
+}
+
+body.dark .screen-mode--light {
 		display: none;
 	}
 
-	.screen-mode--dark {
+body.dark .screen-mode--dark {
 		display: inline;
 	}
-}
 
 body {
 	@extend %flex-column;
@@ -35,13 +36,14 @@ body {
 
 body.light {
 	@extend %light-mode;
-	.screen-mode--dark {
+}
+
+body.light .screen-mode--dark{
 		display: none;
 	}
-	.screen-mode--light {
+body.light .screen-mode--light {
 		display: inline;
 	}
-}
 
 .wrapper {
 	@extend %flex-column-space-evenly;
@@ -109,6 +111,10 @@ body.light {
 		height: 2rem;
 		background-image: var(--background-image-main);
 		background-repeat: no-repeat;
+	}
+
+	&--light {
+		display: none;
 	}
 }
 
@@ -340,7 +346,6 @@ body.light {
 	&__joined-date {
 		@include m.respond-to('extra-large') {
 			width: 50%;
-			//
 		}
 	}
 

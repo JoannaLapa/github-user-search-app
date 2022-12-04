@@ -138,19 +138,6 @@ const checkIfHasTwitter = data => {
 	return twitter, twitterBox
 }
 
-//GETTING USER DATA FROM API
-const getUserData = function (userName) {
-	fetch(`https://api.github.com/users/${userName}`)
-		.then(response => {
-			console.log(response)
-			if (!response.ok) throw new Error(renderError('No results'))
-
-			return response.json()
-		})
-		.then(data => renderUser(data))
-		.catch(err => console.error(err))
-}
-
 //REMOVING UNDERLINE AND TRANSPARENCY ON THE ELEMENT
 const removeClassesFromElement = (element, elementBox) => {
 	element.classList.remove('contact__details--text-decoration')
@@ -180,6 +167,19 @@ const renderUser = function (data) {
 	const twitter = checkIfHasTwitter(data)
 }
 
+//GETTING USER DATA FROM API
+const getUserData = function (userName) {
+	fetch(`https://api.github.com/users/${userName}`)
+		.then(response => {
+			console.log(response)
+			if (!response.ok) throw new Error(renderError('No results'))
+
+			return response.json()
+		})
+		.then(data => renderUser(data))
+		.catch(err => console.error(err))
+}
+
 //ADDEVENTLISTENERS
 document.querySelector('#search-button').addEventListener('click', e => {
 	const searchInput = document.querySelector('#search-input')
@@ -190,6 +190,4 @@ document.querySelector('#search-button').addEventListener('click', e => {
 	searchInput.value = ''
 })
 
-document.querySelector('#screen-mode-button').addEventListener('click', () => {
-	changeColorScreenMode()
-})
+document.querySelector('#screen-mode-button').addEventListener('click', changeColorScreenMode)
