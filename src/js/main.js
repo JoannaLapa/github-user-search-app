@@ -33,7 +33,7 @@ const checkiIfHasName = data => {
 }
 
 //SETTING THE CORRECT DATE'S FORMAT
-const setCorrecJoinedDate = data => {
+const setCorrectJoinedDate = data => {
 	const options = { year: 'numeric', month: 'short', day: 'numeric' }
 	const correctDateFormat = new Date(data.created_at).toLocaleDateString('en-GB', options)
 	const joinedDate = (document.querySelector('#joined-date').textContent = `Joined ${correctDateFormat}`)
@@ -148,7 +148,7 @@ const getUserData = function (userName) {
 			return response.json()
 		})
 		.then(data => renderUser(data))
-		.catch(err => console.error('No results'))
+		.catch(err => console.error(err))
 }
 
 //REMOVING UNDERLINE AND TRANSPARENCY ON THE ELEMENT
@@ -169,7 +169,7 @@ const renderUser = function (data) {
 	const avatar = (document.querySelector('#avatar').src = data.avatar_url)
 	const name = checkiIfHasName(data)
 	const login = (document.querySelector('#username').textContent = `@${data.login}`)
-	const joinedDate = setCorrecJoinedDate(data)
+	const joinedDate = setCorrectJoinedDate(data)
 	const bio = checkIfHasBio(data)
 	const repos = (document.querySelector('#repos').textContent = data.public_repos)
 	const followers = (document.querySelector('#followers').textContent = data.followers)
