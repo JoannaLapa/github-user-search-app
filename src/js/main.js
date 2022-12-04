@@ -2,31 +2,16 @@
 
 const searchErrorMessage = document.querySelector('#error-message')
 const searchErrorMessageBox = document.querySelector('#error-message-box')
-let theme = localStorage.getItem('theme') || 'light'
 
 //CHANGING COLOR SCREEN MODE
 const changeColorScreenMode = () => {
 	const body = document.querySelector('body')
 	if (
-		window.matchMedia('(prefers-color-scheme: light)').matches === true &&
-		body.classList.contains('light') !== true &&
-		body.classList.contains('dark') !== true
-	) {
-		body.classList.add('dark')
-		theme = 'dark'
-		console.log(theme)
-	} else if (body.classList.contains('light')) {
-		body.classList.add('dark')
-		body.classList.remove('light')
-		theme = 'dark'
-		console.log(theme)
+		window.matchMedia('(prefers-color-scheme: light)').matches === true) {
+		body.classList.toggle('dark')
 	} else {
-		body.classList.remove('dark')
-		body.classList.add('light')
-		theme = 'light'
-		console.log(theme)
+		body.classList.toggle('light')
 	}
-	localStorage.setItem('theme', theme)
 }
 
 //PRINTING ERROR MESSAGE
