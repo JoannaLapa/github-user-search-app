@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="dist/img/favicon-32x32.png">
+  <link rel="icon" type="image/jpg" sizes="32x32" href="dist/img/favicon-32x32.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -22,6 +21,17 @@
             <span class="screen-mode--light">DARK</span>
             <span class="screen-mode--dark">LIGHT</span>
             <div class="screen-mode__img-box">
+                <svg class="screen-mode__img--sun" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <g class="screen-mode__img" fill="#FFF" fill-rule="nonzero">
+                        <path
+                            d="M13.545 6.455c-.9-.9-2.17-1.481-3.545-1.481a4.934 4.934 0 00-3.545 1.481c-.9.9-1.481 2.17-1.481 3.545 0 1.376.582 2.646 1.481 3.545.9.9 2.17 1.481 3.545 1.481a4.934 4.934 0 003.545-1.481c.9-.9 1.481-2.17 1.481-3.545a4.934 4.934 0 00-1.481-3.545zM10 3.413a.7.7 0 00.688-.688V.688A.7.7 0 0010 0a.7.7 0 00-.688.688v2.037a.7.7 0 00.688.688zM15.635 5.344l1.455-1.455a.67.67 0 000-.952.67.67 0 00-.952 0l-1.455 1.455a.67.67 0 000 .952c.238.264.66.264.952 0zM19.312 9.312h-2.037a.7.7 0 00-.688.688.7.7 0 00.688.688h2.037A.7.7 0 0020 10a.7.7 0 00-.688-.688zM15.608 14.656a.67.67 0 00-.952 0 .67.67 0 000 .952l1.455 1.455a.67.67 0 00.952 0 .67.67 0 000-.952l-1.455-1.455zM10 16.587a.7.7 0 00-.688.688v2.037A.7.7 0 0010 20a.7.7 0 00.688-.688v-2.037a.7.7 0 00-.688-.688zM4.365 14.656L2.91 16.111a.67.67 0 000 .952.67.67 0 00.952 0l1.455-1.455a.67.67 0 000-.952c-.238-.264-.66-.264-.952 0zM3.413 10a.7.7 0 00-.688-.688H.688A.7.7 0 000 10a.7.7 0 00.688.688h2.037A.7.7 0 003.413 10zM4.365 5.344a.67.67 0 00.952 0 .67.67 0 000-.952L3.862 2.937a.67.67 0 00-.952 0 .67.67 0 000 .952l1.455 1.455z" />
+                    </g>
+                </svg>
+                <svg class="screen-mode__img--moon" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path class="screen-mode__img"
+                        d="M19.513 11.397a.701.701 0 00-.588.128 7.496 7.496 0 01-2.276 1.336 7.101 7.101 0 01-2.583.462 7.505 7.505 0 01-5.32-2.209 7.568 7.568 0 01-2.199-5.342c0-.873.154-1.72.41-2.49a6.904 6.904 0 011.227-2.21.657.657 0 00-.102-.924.701.701 0 00-.589-.128C5.32.61 3.427 1.92 2.072 3.666A10.158 10.158 0 000 9.83c0 2.8 1.125 5.342 2.967 7.19a10.025 10.025 0 007.16 2.98c2.353 0 4.527-.822 6.266-2.183a10.13 10.13 0 003.58-5.624.623.623 0 00-.46-.796z"
+                        fill="#697C9A" fill-rule="nonzero" />
+                </svg>
             </div>
         </div>
     </div>
@@ -41,13 +51,14 @@
         </div>
         <div class="user-profile__container">
           <div class="overview__container">
-            <img class="overview__avatar" id="avatar" src="src/img/github-octocat.png" alt="">
+            <img class="overview__avatar" id="avatar" src="src/img/github-octocat.jpg" alt="">
             <div class="overview__names-box">
               <h1 class="overview__name" id="name">The Octocat</h1>
               <h2 class="overview__username" id="username">@octocat</h2>
               <p class="overview__joined-date" id="joined-date">Joined 25 Jan 2011</p>
             </div>
-            <h3 class="overview__bio overview__bio--transparency" id="bio">This profile has no bio.</h3>
+            <h3 class="overview__bio overview__bio--transparency" id="bio">This profile has no bio.
+            </h3>
           </div>
           <div class="statistics__container">
             <div class="statistics__box">
@@ -87,8 +98,12 @@
   </div>
   <footer>
     <div class="footer__wrapper">
-        <address>Challenge from <a href="https://www.frontendmentor.io/home">Frontend Mentor </a> made by <a
-                href="https://github.com/JoannaLapa"> Joanna Łapa</a></address>
+        <address>Challenge from
+            <a href="https://www.frontendmentor.io/home">Frontend Mentor
+            </a> made by
+            <a href="https://github.com/JoannaLapa"> Joanna Łapa
+            </a>
+        </address>
     </div>
 </footer>
   <script src="dist/js/main.min.js"></script>
